@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <title>Campus Swap | Book, Belongings Exchange Platform</title>
+
+    <meta name="description" content="Campus Swap - Student-focused platform for buying, selling, and exchanging items within the campus community">
+    <meta name="keywords" content="campus swap, students, exchange, buy, sell, donate, books, electronics, SRMIST">
+    <meta name="author" content="Campus Swap Team">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="assets/js/theme-switch.js"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#6366f1">
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#080032">
+    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/swiper.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/page-loading.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/theme.css">
+    <script type="text/javascript" src="assets/js/page-loading.js"></script>
+  </head>
+
+  <body>
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div><span>Loading...</span>
+      </div>
+    </div>
+
+    <main class="page-wrapper">
+      <header class="header navbar navbar-expand-lg position-absolute navbar-sticky">
+        <div class="container px-3">
+          <a href="index.html" class="navbar-brand pe-3">
+            <i class="bx bx-refresh fs-2 me-1 text-primary"></i>
+            Campus Swap
+          </a>
+          <div id="navbarNav" class="offcanvas offcanvas-end">
+            <div class="offcanvas-header border-bottom">
+              <h5 class="offcanvas-title">Menu</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" aria-current="page">Categories</a>
+                  <div class="dropdown-menu p-0">
+                    <div class="d-lg-flex">
+                      <div class="mega-dropdown-column d-flex justify-content-center align-items-center rounded-3 rounded-end-0 px-0" style="margin: -1px; background-color: #f3f6ff;">
+                        <img src="assets/img/landings.jpg" alt="Categories">
+                      </div>
+                      <div class="mega-dropdown-column pt-lg-3 pb-lg-4" style="--si-mega-dropdown-column-width: 15rem;">
+                        <ul class="list-unstyled mb-0">
+                          <li><a href="#" class="dropdown-item">All Items</a></li>
+                          <li><a href="#" class="dropdown-item">Books & Notes</a></li>
+                          <li><a href="#" class="dropdown-item">Electronics</a></li>
+                          <li><a href="#" class="dropdown-item">Stationery<span class="badge bg-success ms-2">New</span></a></li>
+                          <li><a href="#" class="dropdown-item d-flex align-items-center">Bikes & Commute</a></li>
+                          <li><a href="#" class="dropdown-item">Furniture</a></li>
+                          <li><a href="#" class="dropdown-item">Dorm Gear</a></li>
+                          <li><a href="#" class="dropdown-item">Lab Equipments</a></li>
+                          <li><a href="#" class="dropdown-item">Sports Gear</a></li>
+                          <li><a href="#" class="dropdown-item">Miscellaneous<span class="badge bg-success ms-2">New</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Community</a>
+                  <div class="dropdown-menu">
+                    <div class="d-lg-flex pt-lg-3">
+                      <div class="mega-dropdown-column">
+                        <h6 class="px-3 mb-2">About Us</h6>
+                        <ul class="list-unstyled mb-3">
+                          <li><a href="about-v1.html" class="dropdown-item py-1">Our Mission</a></li>
+                          <li><a href="about-v2.html" class="dropdown-item py-1">Safety Guidelines</a></li>
+                          <li><a href="about-v3.html" class="dropdown-item py-1">How It Works</a></li>
+                        </ul>
+                        <h6 class="px-3 mb-2">Blog</h6>
+                        <ul class="list-unstyled mb-3">
+                          <li><a href="blog-list-with-sidebar.html" class="dropdown-item py-1">Student Stories</a></li>
+                          <li><a href="blog-grid-with-sidebar.html" class="dropdown-item py-1">Thrifting Tips</a></li>
+                        </ul>
+                      </div>
+                      <div class="mega-dropdown-column">
+                        <h6 class="px-3 mb-2">Support</h6>
+                        <ul class="list-unstyled mb-3">
+                          <li><a href="contacts-v1.html" class="dropdown-item py-1">Contact Us</a></li>
+                          <li><a href="contacts-v2.html" class="dropdown-item py-1">Report an Issue</a></li>
+                          <li><a href="contacts-v3.html" class="dropdown-item py-1">FAQ</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Account</a>
+                  <ul class="dropdown-menu">
+                    <li><a href="profile.html" class="dropdown-item">My Profile</a></li>
+                    <li><a href="account-saved-items.html" class="dropdown-item">Saved Items</a></li>
+                    <li><a href="account-messages.html" class="dropdown-item">Messages</a></li>
+                    <li><a href="login.html" class="dropdown-item">Sign In</a></li>
+                    <li><a href="register.html" class="dropdown-item">Sign Up</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="offcanvas-header border-top">
+              <a href="login.html" class="btn btn-primary w-100">
+                <i class="bx bx-user fs-4 lh-1 me-1"></i>
+                &nbsp;Sign In
+              </a>
+            </div>      
+          </div>
+          <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
+            <input type="checkbox" class="form-check-input" id="theme-mode">
+            <label class="form-check-label d-none d-sm-block" for="theme-mode">Light</label>
+            <label class="form-check-label d-none d-sm-block" for="theme-mode">Dark</label>
+          </div>
+          <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a href="login.html" class="btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex">
+            <i class="bx bx-user fs-5 lh-1 me-1"></i>
+            &nbsp;Login / Sign Up
+          </a>
+        </div>
+      </header>
+
+
+      <section class="position-relative overflow-hidden py-4 mb-3">
+        <div class="container pt-lg-3">
+          <div class="row flex-lg-nowrap">
+            <div class="col-lg-6 col-xl-5 text-center text-lg-start pt-5 mt-xl-4">
+              <h1 class="display-4 pt-5 pb-2 pb-lg-3 mt-sm-2 mt-lg-5">Campus Swap: Book &amp; Belongings Exchange</h1>
+              <p class="fs-lg mb-4 mb-lg-5">A student-focused platform that enables you to easily buy, sell, exchange, and donate items within your campus community.</p>
+              <a href="register.html" class="btn btn-primary btn-lg">Start Swapping Now</a>
+              <div class="pt-5 mt-xl-5">
+                <h6 class="pt-xl-3 pb-3 pb-lg-4">Trusted by students across SRM Institute of Science and Technology</h6>
+                <div class="d-flex justify-content-center justify-content-lg-start mx-xl-n2">
+                  <a href="#" class="d-block me-2">
+                    <img src="assets/img/brands/07.svg" width="135" alt="Logo">
+                  </a>
+                  <a href="#" class="d-block me-2">
+                    <img src="assets/img/brands/04.svg" width="135" alt="Logo">
+                  </a>
+                  <a href="#" class="d-block me-2">
+                    <img src="assets/img/brands/02.svg" width="135" alt="Logo">
+                  </a>
+                  <a href="#" class="d-block me-2">
+                    <img src="assets/img/brands/05.svg" width="135" alt="Logo">
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="parallax mt-4 ms-4 me-lg-0 ms-lg-n5 ms-xl-n3 mt-lg-n4">
+              <div class="parallax-layer" data-depth="0.1">
+                <img src="assets/img/landing/saas-1/hero/layer01.png" width="1416" alt="Layer">
+              </div>
+              <div class="parallax-layer zindex-2" data-depth="0.15">
+                <img src="assets/img/landing/saas-1/hero/layer02.png" alt="Layer">
+              </div>
+              <div class="parallax-layer zindex-2" data-depth="0.35">
+                <img src="assets/img/landing/saas-1/hero/layer03.png" alt="Layer">
+              </div>
+              <div class="parallax-layer zindex-2" data-depth="0.25">
+                <img src="assets/img/landing/saas-1/hero/layer04.png" alt="Layer">
+              </div>
+              <div class="parallax-layer zindex-2" data-depth="0.4">
+                <img src="assets/img/landing/saas-1/hero/layer05.png" alt="Layer">
+              </div>
+              <div class="parallax-layer zindex-2" data-depth="0.28">
+                <img src="assets/img/landing/saas-1/hero/layer06.png" alt="Layer">
+              </div>
+              <div class="parallax-layer zindex-2" data-depth="0.35">
+                <img src="assets/img/landing/saas-1/hero/layer07.png" alt="Layer">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="container">
+        <h2 class="h1 text-center pb-4 pb-lg-5">Simple, Accessible &amp; Cost-Effective</h2>
+        <div class="row">
+          <div class="col-lg-3 col-md-4 col-sm-6 text-center pb-md-2 mb-3 mb-lg-4">
+            <div class="d-inline-block bg-secondary rounded-circle p-3 mb-4">
+              <i class="bx bx-money fs-1 text-primary"></i>
+            </div>
+            <h3 class="h5 pb-1 mb-2">Save Money</h3>
+            <p class="fs-sm">Provide affordable second-hand products to help students save on campus essentials.</p>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 text-center pb-md-2 mb-3 mb-lg-4">
+            <div class="d-inline-block bg-secondary rounded-circle p-3 mb-4">
+              <i class="bx bx-recycle fs-1 text-primary"></i>
+            </div>
+            <h3 class="h5 pb-1 mb-2">Promote Reuse</h3>
+            <p class="fs-sm">Reduce waste by giving unused items a second life instead of throwing them away.</p>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 text-center pb-md-2 mb-3 mb-lg-4">
+            <div class="d-inline-block bg-secondary rounded-circle p-3 mb-4">
+              <i class="bx bx-buildings fs-1 text-primary"></i>
+            </div>
+            <h3 class="h5 pb-1 mb-2">Campus Community</h3>
+            <p class="fs-sm">Trade securely within your own college campus with verified student profiles.</p>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 text-center pb-md-2 mb-3 mb-lg-4">
+            <div class="d-inline-block bg-secondary rounded-circle p-3 mb-4">
+              <i class="bx bx-list-plus fs-1 text-primary"></i>
+            </div>
+            <h3 class="h5 pb-1 mb-2">Easy Listings</h3>
+            <p class="fs-sm">List items quickly with photos, condition tags, and expected swap preferences.</p>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 text-center pb-md-2 mb-3 mb-lg-4">
+            <div class="d-inline-block bg-secondary rounded-circle p-3 mb-4">
+              <i class="bx bx-search fs-1 text-primary"></i>
+            </div>
+            <h3 class="h5 pb-1 mb-2">Smart Search</h3>
+            <p class="fs-sm">Easily find books, electronics, and dorm essentials using intuitive category filters.</p>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 text-center pb-md-2 mb-3 mb-lg-4">
+            <div class="d-inline-block bg-secondary rounded-circle p-3 mb-4">
+              <i class="bx bx-chat fs-1 text-primary"></i>
+            </div>
+            <h3 class="h5 pb-1 mb-2">Direct Chat</h3>
+            <p class="fs-sm">Communicate directly with buyers and sellers to negotiate and arrange meetups.</p>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 text-center pb-md-2 mb-3 mb-lg-4">
+            <div class="d-inline-block bg-secondary rounded-circle p-3 mb-4">
+              <i class="bx bx-shield fs-1 text-primary"></i>
+            </div>
+            <h3 class="h5 pb-1 mb-2">Secure Viewing</h3>
+            <p class="fs-sm">Securely access resources, item listings, and user profiles in a trusted environment.</p>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 text-center pb-md-2 mb-3 mb-lg-4">
+            <div class="d-inline-block bg-secondary rounded-circle p-3 mb-4">
+              <i class="bx bx-group fs-1 text-primary"></i>
+            </div>
+            <h3 class="h5 pb-1 mb-2">Student Driven</h3>
+            <p class="fs-sm">Built by students, for students to enhance academic life and foster collaboration.</p>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="container pt-3 pt-md-4 pt-lg-5 pb-2 mt-lg-2 mt-xl-4">
+        <div class="row align-items-center">
+          <div class="rellax col-md-7" data-rellax-percentage="0.5" data-rellax-speed="-0.6" data-disable-parallax-down="lg">
+            <img src="assets/img/landing/saas-1/dashboard.png" class="d-block mx-auto" width="746" alt="Image">
+          </div>
+          <div class="rellax col-md-5 col-xl-4 offset-xl-1 d-flex d-sm-block flex-column" data-rellax-percentage="0.5" data-rellax-speed="0.8" data-disable-parallax-down="lg">
+            <h2 class="pb-3 pt-2 pt-md-0">How Campus Swap Works</h2>
+            <ul class="list-unstyled pb-2">
+              <li class="d-flex align-items-center pb-1 mb-2">
+                <i class="bx bx-check-circle text-primary fs-xl me-2"></i>
+                Create a simple and trusted student profile
+              </li>
+              <li class="d-flex align-items-center pb-1 mb-2">
+                <i class="bx bx-check-circle text-primary fs-xl me-2"></i>
+                List your unused books and belongings
+              </li>
+              <li class="d-flex align-items-center pb-1 mb-2">
+                <i class="bx bx-check-circle text-primary fs-xl me-2"></i>
+                Search for affordable second-hand products
+              </li>
+              <li class="d-flex align-items-center pb-1 mb-2">
+                <i class="bx bx-check-circle text-primary fs-xl me-2"></i>
+                Connect with interested students via chat
+              </li>
+              <li class="d-flex align-items-center pb-1 mb-2">
+                <i class="bx bx-check-circle text-primary fs-xl me-2"></i>
+                Meet on campus for safe and secure exchange
+              </li>
+            </ul>
+            <a href="register.html" class="btn btn-primary">
+              Create your account
+              <i class="bx bx-right-arrow-alt fs-xl ms-2"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="container pt-5 pb-2 mt-3 mt-sm-4 mt-xl-5">
+        <h2 class="h1 text-center pb-3 pb-lg-4">One Platform — All Your Campus Needs</h2>
+        <ul class="nav nav-tabs flex-nowrap justify-content-lg-center overflow-auto pb-2 mb-3 mb-lg-4" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link text-nowrap active" id="project-management-tab" data-bs-toggle="tab" data-bs-target="#project-management" type="button" role="tab" aria-controls="project-management" aria-selected="true">
+              <i class="bx bx-book fs-lg opacity-60 me-2"></i>
+              Textbooks &amp; Notes
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link text-nowrap" id="remote-work-tab" data-bs-toggle="tab" data-bs-target="#remote-work" type="button" role="tab" aria-controls="remote-work" aria-selected="false">
+              <i class="bx bx-laptop fs-lg opacity-60 me-2"></i>
+              Electronics &amp; Gadgets
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link text-nowrap" id="product-release-tab" data-bs-toggle="tab" data-bs-target="#product-release" type="button" role="tab" aria-controls="product-release" aria-selected="false">
+              <i class="bx bx-bed fs-lg opacity-60 me-2"></i>
+              Dorm Essentials
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link text-nowrap" id="campaign-planning-tab" data-bs-toggle="tab" data-bs-target="#campaign-planning" type="button" role="tab" aria-controls="campaign-planning" aria-selected="false">
+              <i class="bx bx-cycling fs-lg opacity-60 me-2"></i>
+              Bicycles &amp; Commute
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content bg-secondary rounded-3 py-4">
+          <div class="tab-pane fade show active" id="project-management" role="tabpanel" aria-labelledby="project-management-tab">
+            <div class="row align-items-center pt-3 pt-sm-4 pt-md-0 px-3 px-sm-4 px-lg-0">
+              <div class="col-lg-4 col-md-5 offset-lg-1 text-center text-md-start">
+                <h3 class="mb-lg-4">Textbooks &amp; Notes</h3>
+                <p>Exchange previous semester books and study materials easily. Don't let your expensive engineering textbooks gather dust on the shelf when another student desperately needs them for their upcoming courses.</p>
+              </div>
+              <div class="col-lg-6 col-md-7 mt-md-4">
+                <img src="assets/img/landing/saas-1/use-cases/01.png" class="d-block my-lg-2 mx-auto me-md-0" width="595" alt="Image">
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="remote-work" role="tabpanel" aria-labelledby="remote-work-tab">
+            <div class="row align-items-center pt-3 pb-2 pb-sm-3 pt-sm-4 pt-md-0 px-3 px-sm-4 px-lg-0">
+              <div class="col-lg-4 col-md-5 offset-lg-1 text-center text-md-start">
+                <h3 class="mb-lg-4">Electronics &amp; Gadgets</h3>
+                <p>Find affordable calculators, laptops, chargers, and accessories. Upgrade your tech gear without breaking the bank by purchasing gently used devices directly from your seniors or peers on campus.</p>
+              </div>
+              <div class="col-lg-6 col-md-7 mt-md-4">
+                <img src="assets/img/landing/saas-1/use-cases/02.png" class="d-block my-lg-2 mx-auto me-md-0" width="502" alt="Image">
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="product-release" role="tabpanel" aria-labelledby="product-release-tab">
+            <div class="row align-items-center pt-3 pt-sm-4 pt-md-0 px-3 pe-sm-4 pe-md-0 ps-sm-4 ps-lg-0">
+              <div class="col-lg-4 col-md-5 offset-lg-1 text-center text-md-start">
+                <h3 class="mb-lg-4">Dorm Essentials</h3>
+                <p>Buy or sell furniture, lamps, organizers, and room decorations. Hostels and PGs require a lot of setup, make it easier by exchanging items with students who are moving out or graduating.</p>
+              </div>
+              <div class="col-lg-6 col-md-7 mt-n3 mt-md-1">
+                <img src="assets/img/landing/saas-1/use-cases/03.png" class="d-block mb-lg-2 mx-auto me-md-0" width="525" alt="Image">
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="campaign-planning" role="tabpanel" aria-labelledby="campaign-planning-tab">
+            <div class="row align-items-center pt-3 pt-sm-4 pt-md-0 px-3 pe-sm-4 pe-md-0 ps-sm-4 ps-lg-0">
+              <div class="col-lg-4 col-md-5 offset-lg-1 text-center text-md-start">
+                <h3 class="mb-lg-4">Bicycles &amp; Commute</h3>
+                <p>Get around the campus easily by swapping or buying bicycles. A campus as large as SRMIST requires reliable transport. Find students selling their bikes as they graduate, ensuring a seamless transfer.</p>
+              </div>
+              <div class="col-lg-6 col-md-7 mt-n3 mt-md-1">
+                <img src="assets/img/landing/saas-1/use-cases/04.png" class="d-block mb-lg-2 mx-auto me-md-0" width="545" alt="Image">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="container py-5 my-md-2 my-lg-4 my-xl-5">
+        <h2 class="h1 text-center pb-3 pb-md-4">Student Membership Plans</h2>
+        <div class="price-switch-wrapper mb-n2">
+          <div class="form-check form-switch price-switch justify-content-center mt-2 mb-4" data-bs-toggle="price">
+            <input type="checkbox" class="form-check-input" id="pricing">
+            <label class="form-check-label" for="pricing">Monthly</label>
+            <label class="form-check-label d-flex align-items-start" for="pricing">Annually <span class="text-danger fs-xs fw-semibold mt-n2 ms-2">-10%</span></label>
+          </div>    
+          <div class="table-responsive-xxl pt-md-3">
+            <div class="row flex-nowrap pb-4">
+              <div class="col">
+                <div class="card h-100 border-0 shadow-sm p-xxl-3" style="min-width: 18rem;">
+                  <div class="card-body">
+                    <div class="d-flex align-items-center pb-2 pb-md-3 mb-4">
+                      <div class="flex-shrink-0 bg-secondary rounded-3">
+                        <img src="assets/img/landing/saas-1/pricing/basic.png" width="84" alt="Icon">
+                      </div>
+                      <div class="ps-4">
+                        <h3 class="fs-lg fw-normal text-body mb-2">Basic</h3>
+                        <h4 class="h3 lh-1 mb-0">
+                          <span data-monthly-price>₹0.00</span>
+                          <span class="d-none" data-annual-price>₹0.00</span>
+                          <span class="text-body fs-sm fw-normal"> / per month</span>
+                        </h4>
+                      </div>
+                    </div>
+                    <ul class="list-unstyled fs-sm pb-md-3 mb-3">
+                      <li class="d-flex mb-2">
+                        <i class="bx bx-check fs-xl text-primary me-1"></i>
+                        Free listing of up to 5 items
+                      </li>
+                      <li class="d-flex mb-2">
+                        <i class="bx bx-check fs-xl text-primary me-1"></i>
+                        Standard search visibility
+                      </li>
+                      <li class="d-flex mb-2">
+                        <i class="bx bx-check fs-xl text-primary me-1"></i>
+                        Access to campus chat
+                      </li>
+                      <li class="d-flex text-muted mb-2">
+                        <i class="bx bx-x fs-xl me-1"></i>
+                        Highlighted listings
+                      </li>
+                      <li class="d-flex text-muted">
+                        <i class="bx bx-x fs-xl me-1"></i>
+                        Premium verified badge
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-footer border-0 pt-0 pb-4">
+                    <a href="register.html" class="btn btn-outline-primary w-100">Sign Up Free</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100 border-0 bg-primary shadow-primary shadow-dark-mode-none p-xxl-3" style="min-width: 18rem;">
+                  <div class="card-body">
+                    <div class="d-flex align-items-center pb-2 pb-md-3 mb-4">
+                      <div class="flex-shrink-0 rounded-3" style="background-color: rgba(255,255,255, .1);">
+                        <img src="assets/img/landing/saas-1/pricing/standard.png" width="84" alt="Icon">
+                      </div>
+                      <div class="ps-4">
+                        <h3 class="fs-lg fw-normal text-light opacity-70 mb-2">Verified Student</h3>
+                        <h4 class="h3 text-light lh-1 mb-0">
+                          <span data-monthly-price>₹49.00</span>
+                          <span class="d-none" data-annual-price>₹490.00</span>
+                          <span class="fs-sm fw-normal opacity-70"> / per month</span>
+                        </h4>
+                      </div>
+                    </div>
+                    <ul class="list-unstyled fs-sm pb-md-3 mb-3">
+                      <li class="d-flex text-light mb-2">
+                        <i class="bx bx-check fs-xl me-1"></i>
+                        <span class="opacity-70">Unlimited item listings</span>
+                      </li>
+                      <li class="d-flex text-light mb-2">
+                        <i class="bx bx-check fs-xl me-1"></i>
+                        <span class="opacity-70">Advanced category filters</span>
+                      </li>
+                      <li class="d-flex text-light mb-2">
+                        <i class="bx bx-check fs-xl me-1"></i>
+                        <span class="opacity-70">Access to campus chat</span>
+                      </li>
+                      <li class="d-flex text-light mb-2">
+                        <i class="bx bx-check fs-xl me-1"></i>
+                        <span class="opacity-70">Highlighted listings</span>
+                      </li>
+                      <li class="d-flex text-light opacity-50">
+                        <i class="bx bx-x fs-xl me-1"></i>
+                        Featured on homepage
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-footer border-0 pt-0 pb-4">
+                    <a href="#" class="btn btn-light w-100">Upgrade to Verified</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100 border-0 shadow-sm p-xxl-3" style="min-width: 18rem;">
+                  <div class="card-body">
+                    <div class="d-flex align-items-center pb-2 pb-md-3 mb-4">
+                      <div class="flex-shrink-0 bg-secondary rounded-3">
+                        <img src="assets/img/landing/saas-1/pricing/ultimate.png" width="84" alt="Icon">
+                      </div>
+                      <div class="ps-4">
+                        <h3 class="fs-lg fw-normal text-body mb-2">Pro Seller</h3>
+                        <h4 class="h3 lh-1 mb-0">
+                          <span data-monthly-price>₹99.00</span>
+                          <span class="d-none" data-annual-price>₹990.00</span>
+                          <span class="text-body fs-sm fw-normal"> / per month</span>
+                        </h4>
+                      </div>
+                    </div>
+                    <ul class="list-unstyled fs-sm pb-md-3 mb-3">
+                      <li class="d-flex mb-2">
+                        <i class="bx bx-check fs-xl text-primary me-1"></i>
+                        Unlimited item listings
+                      </li>
+                      <li class="d-flex mb-2">
+                        <i class="bx bx-check fs-xl text-primary me-1"></i>
+                        Highlighted listings
+                      </li>
+                      <li class="d-flex mb-2">
+                        <i class="bx bx-check fs-xl text-primary me-1"></i>
+                        Featured on homepage
+                      </li>
+                      <li class="d-flex mb-2">
+                        <i class="bx bx-check fs-xl text-primary me-1"></i>
+                        Instant notifications for requests
+                      </li>
+                      <li class="d-flex">
+                        <i class="bx bx-check fs-xl text-primary me-1"></i>
+                        Premium verified badge
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-footer border-0 pt-0 pb-4">
+                    <a href="#" class="btn btn-outline-primary w-100">Become a Pro Seller</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="bg-secondary py-5">
+        <div class="container py-2 py-md-3 py-lg-4 py-xl-5">
+          <div class="row row-cols-1 row-cols-md-2 gx-3 gx-lg-4">
+            <div class="col-md-6 mb-3 mb-md-0">
+              <div class="card border-0 bg-dark h-100 p-xl-4">
+                <div class="card-body">
+                  <h2 class="display-1 text-light">15k+</h2>
+                  <p class="lead fw-medium text-light"><span class="opacity-70">students are taking advantage of our</span> <span class="fw-bold">Campus Swap Platform</span><span class="opacity-70">. It’s a transparent and efficient way to exchange belongings.</span></p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card border-0 shadow-sm p-4 p-xxl-5">
+                <div class="d-flex justify-content-between pb-4 mb-2">
+                  <span class="btn btn-icon btn-primary btn-lg shadow-primary pe-none">
+                    <i class="bx bxs-quote-left"></i>
+                  </span>
+                  <div class="d-flex">
+                    <button type="button" id="testimonials-prev" class="btn btn-prev btn-icon btn-sm me-2" aria-label="Previous">
+                      <i class="bx bx-chevron-left"></i>
+                    </button>
+                    <button type="button" id="testimonials-next" class="btn btn-next btn-icon btn-sm ms-2" aria-label="Next">
+                      <i class="bx bx-chevron-right"></i>
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="swiper mx-0 mb-md-n2 mb-xxl-n3" data-swiper-options='{
+                  "spaceBetween": 24,
+                  "loop": true,
+                  "pagination": {
+                    "el": ".swiper-pagination",
+                    "clickable": true
+                  },
+                  "navigation": {
+                    "prevEl": "#testimonials-prev",
+                    "nextEl": "#testimonials-next"
+                  }
+                }'>
+                  <div class="swiper-wrapper">
+  
+                    <div class="swiper-slide h-auto">
+                      <figure class="card h-100 position-relative border-0 bg-transparent">
+                        <blockquote class="card-body p-0 mb-0">
+                          <p class="fs-lg mb-0">Campus Swap helped me find all my 2nd-year engineering books for half the price. The chat feature made meeting up on campus so simple. Highly recommended!</p>
+                        </blockquote>
+                        <figcaption class="card-footer border-0 d-flex align-items-center w-100 pb-2">
+                          <img src="assets/img/avatar/14.jpg" width="60" class="rounded-circle" alt="Annette Black">
+                          <div class="ps-3">
+                            <h6 class="fw-semibold lh-base mb-0">Annette Black</h6>
+                            <span class="fs-sm text-muted">2nd Year B.Tech CSE Student</span>
+                          </div>
+                        </figcaption>
+                      </figure>
+                    </div>
+  
+                    <div class="swiper-slide h-auto">
+                      <figure class="card h-100 position-relative border-0 bg-transparent">
+                        <blockquote class="card-body p-0 mb-0">
+                          <p class="fs-lg mb-0">I easily sold my old bicycle before moving out of the hostel. Connecting directly with juniors instead of relying on external apps felt much safer and more reliable.</p>
+                        </blockquote>
+                        <figcaption class="card-footer border-0 d-flex align-items-center w-100 pb-2">
+                          <img src="assets/img/avatar/13.jpg" width="60" class="rounded-circle" alt="Ralph Edwards">
+                          <div class="ps-3">
+                            <h6 class="fw-semibold lh-base mb-0">Ralph Edwards</h6>
+                            <span class="fs-sm text-muted">Final Year ECE Student</span>
+                          </div>
+                        </figcaption>
+                      </figure>
+                    </div>
+  
+                    <div class="swiper-slide h-auto">
+                      <figure class="card h-100 position-relative border-0 bg-transparent">
+                        <blockquote class="card-body p-0 mb-0">
+                          <p class="fs-lg mb-0">Great initiative for sustainability. I donated my old engineering drafter and actually got a study lamp in exchange. This is exactly what our campus needed.</p>
+                        </blockquote>
+                        <figcaption class="card-footer border-0 d-flex align-items-center w-100 pb-2">
+                          <img src="assets/img/avatar/11.jpg" width="60" class="rounded-circle" alt="Darrell Steward">
+                          <div class="ps-3">
+                            <h6 class="fw-semibold lh-base mb-0">Darrell Steward</h6>
+                            <span class="fs-sm text-muted">3rd Year Mechanical Student</span>
+                          </div>
+                        </figcaption>
+                      </figure>
+                    </div>
+                  </div>
+  
+                  <div class="swiper-pagination position-relative mt-5"></div>
+                </div>        
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section class="container py-5 my-md-2 my-lg-4 my-xl-5">
+        <div class="row justify-content-center pt-1 pb-1 mb-2 mb-md-3 mb-lg-4">
+          <div class="col-lg-8 col-md-9 text-center">
+            <h2 class="h1 mb-4">Supported Campus Categories</h2>
+            <p class="fs-lg text-muted mb-0">Swap anything and everything you need for college life. From academic materials to dorm room essentials, explore popular categories directly connected to student needs.</p>
+          </div>
+        </div>
+        <div class="swiper swiper-nav-onhover mx-n2" data-swiper-options='{
+          "slidesPerView": 2,
+          "spaceBetween": 8,
+          "pagination": {
+            "el": ".swiper-pagination",
+            "clickable": true
+          },
+          "breakpoints": {
+            "500": {
+              "slidesPerView": 3
+            },
+            "600": {
+              "slidesPerView": 4
+            },
+            "768": {
+              "slidesPerView": 5
+            },
+            "850": {
+              "slidesPerView": 6
+            },
+            "1000": {
+              "slidesPerView": 7
+            },
+            "1200": {
+              "slidesPerView": 8
+            }
+          }
+        }'>
+          <div class="swiper-wrapper">
+
+            <div class="swiper-slide py-3">
+              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2">
+                <div class="card-body text-center">
+                  <i class="bx bx-book fs-1 text-primary mb-2"></i>
+                  <h6 class="mb-0 fs-sm">Textbooks</h6>
+                </div>
+              </a>
+            </div>
+
+            <div class="swiper-slide py-3">
+              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2">
+                <div class="card-body text-center">
+                  <i class="bx bx-laptop fs-1 text-primary mb-2"></i>
+                  <h6 class="mb-0 fs-sm">Electronics</h6>
+                </div>
+              </a>
+            </div>
+
+            <div class="swiper-slide py-3">
+              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2">
+                <div class="card-body text-center">
+                  <i class="bx bx-pencil fs-1 text-primary mb-2"></i>
+                  <h6 class="mb-0 fs-sm">Stationery</h6>
+                </div>
+              </a>
+            </div>
+
+            <div class="swiper-slide py-3">
+              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2">
+                <div class="card-body text-center">
+                  <i class="bx bx-cycling fs-1 text-primary mb-2"></i>
+                  <h6 class="mb-0 fs-sm">Bicycles</h6>
+                </div>
+              </a>
+            </div>
+
+            <div class="swiper-slide py-3">
+              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2">
+                <div class="card-body text-center">
+                  <i class="bx bx-chair fs-1 text-primary mb-2"></i>
+                  <h6 class="mb-0 fs-sm">Furniture</h6>
+                </div>
+              </a>
+            </div>
+
+            <div class="swiper-slide py-3">
+              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2">
+                <div class="card-body text-center">
+                  <i class="bx bx-bed fs-1 text-primary mb-2"></i>
+                  <h6 class="mb-0 fs-sm">Dorm Gear</h6>
+                </div>
+              </a>
+            </div>
+
+            <div class="swiper-slide py-3">
+              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2">
+                <div class="card-body text-center">
+                  <i class="bx bx-bulb fs-1 text-primary mb-2"></i>
+                  <h6 class="mb-0 fs-sm">Accessories</h6>
+                </div>
+              </a>
+            </div>
+
+            <div class="swiper-slide py-3">
+              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2">
+                <div class="card-body text-center">
+                  <i class="bx bx-basketball fs-1 text-primary mb-2"></i>
+                  <h6 class="mb-0 fs-sm">Sports Gear</h6>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="swiper-pagination position-relative pt-3 mt-4"></div>
+        </div>
+        <div class="text-center pt-xl-4 my-3 mt-xl-n2">
+          <a href="#" class="btn btn-primary mt-xl-3">Browse all categories</a>
+        </div>
+      </section>
+
+
+      <section class="container">
+        <div class="bg-dark border border-light rounded-3 py-5 px-4 px-sm-0">
+          <div class="row justify-content-center py-sm-2 py-lg-5">
+            <div class="col-xl-6 col-lg-7 col-md-8 col-sm-10 text-center">
+              <h2 class="h1 text-light mb-4">Ready to Start Swapping?</h2>
+              <p class="fs-lg text-light opacity-70 pb-4 mb-3">Join the campus community and give your unused items a second life.</p>
+
+              <form class="input-group input-group-lg d-none d-sm-flex needs-validation mb-3" novalidate>
+                <input type="email" class="form-control rounded-start ps-5" placeholder="College Email ID (netid@srmist.edu.in)" required>
+                <i class="bx bx-envelope fs-lg text-muted position-absolute top-50 start-0 translate-middle-y ms-3 zindex-5"></i>
+                <div class="invalid-tooltip position-absolute top-100 start-0">Please provide a valid college email address.</div>
+                <button type="submit" class="btn btn-primary">Join Campus Swap</button>
+              </form>
+
+              <form class="needs-validation d-sm-none mb-3" novalidate>
+                <div class="position-relative mb-3">
+                  <input type="email" class="form-control form-control-lg rounded-start ps-5" placeholder="College Email ID" required>
+                  <i class="bx bx-envelope fs-lg text-muted position-absolute top-50 start-0 translate-middle-y ms-3 zindex-5"></i>
+                  <div class="invalid-tooltip position-absolute top-0 start-0 mt-n4">Please provide a valid email address.</div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-100">Join Campus Swap</button>
+              </form>
+              <p class="fs-sm text-light opacity-50 mb-0">Sign up requires a valid university/college email ID for verification.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+
+    <footer class="footer pt-5 pb-4 pb-lg-5">
+      <div class="container pt-lg-4">
+        <div class="row pb-5">
+          <div class="col-lg-4 col-md-6">
+            <div class="navbar-brand text-dark p-0 me-0 mb-3 mb-lg-4 text-uppercase">
+              <i class="bx bx-refresh fs-3 text-primary me-2"></i>
+              Campus Swap
+            </div>
+            <p class="fs-sm pb-lg-3 mb-4">Campus Swap is a student-focused platform that enables students to easily buy, sell, exchange, and donate items within their campus community.</p>
+            <form class="needs-validation" novalidate>
+              <label for="subscr-email" class="form-label">Subscribe to campus updates</label>
+              <div class="input-group">
+                <input type="email" id="subscr-email" class="form-control rounded-start ps-5" placeholder="Your email" required>
+                <i class="bx bx-envelope fs-lg text-muted position-absolute top-50 start-0 translate-middle-y ms-3 zindex-5"></i>
+                <div class="invalid-tooltip position-absolute top-100 start-0">Please provide a valid email address.</div>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-xl-6 col-lg-7 col-md-5 offset-xl-2 offset-md-1 pt-4 pt-md-1 pt-lg-0">
+            <div id="footer-links" class="row">
+              <div class="col-lg-4">
+                <h6 class="mb-2">
+                  <a href="#useful-links" class="d-block text-dark dropdown-toggle d-lg-none py-2" data-bs-toggle="collapse">Useful Links</a>
+                </h6>
+                <div id="useful-links" class="collapse d-lg-block" data-bs-parent="#footer-links">
+                  <ul class="nav flex-column pb-lg-1 mb-lg-3">
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">About Us</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">How It Works</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">Safety Guidelines</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">Blog</a></li>
+                  </ul>
+                  <ul class="nav flex-column mb-2 mb-lg-0">
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">Terms &amp; Conditions</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">Privacy Policy</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-3">
+                <h6 class="mb-2">
+                  <a href="#social-links" class="d-block text-dark dropdown-toggle d-lg-none py-2" data-bs-toggle="collapse">Socials</a>
+                </h6>
+                <div id="social-links" class="collapse d-lg-block" data-bs-parent="#footer-links">
+                  <ul class="nav flex-column mb-2 mb-lg-0">
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">Facebook</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">LinkedIn</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">Twitter</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">Instagram</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-5 pt-2 pt-lg-0">
+                <h6 class="mb-2">Contact Us</h6>
+                <a href="mailto:support@campusswap.com" class="fw-medium">support@campusswap.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="nav d-block fs-xs text-center text-md-start pb-2 pb-lg-0 mb-0">
+          &copy; 2026 Campus Swap. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+
+    <a href="#top" class="btn-scroll-top" data-scroll>
+      <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
+      <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+    </a>
+
+
+    <script src="assets/js/parallax.js"></script>
+    <script src="assets/js/jarallax.js"></script>
+    <script src="assets/js/rellax.js"></script>
+    <script src="assets/js/swiper.js"></script>
+
+    <script src="assets/js/theme.js"></script>
+  </body>
+</html>
