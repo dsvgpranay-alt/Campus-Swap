@@ -59,7 +59,7 @@ Campus-Swap/
         ├── css/
         └── js/
 
-
+```
 ## 🔮 Future Improvements
 
 - 💬 In-app messaging between buyers and sellers
