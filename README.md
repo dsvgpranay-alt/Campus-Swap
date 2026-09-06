@@ -14,21 +14,21 @@ and swap books and belongings within their campus.
 ## Project structure
 ```
 campus_swap/
-├── app.py                # All Flask routes
-├── schema.sql            # Run once to create the database & tables
+├── app.py               
+├── schema.sql           
 ├── requirements.txt
 ├── templates/
-│   ├── index.html         # Your homepage (unchanged design, auth-aware nav)
-│   ├── login.html          # Your sign-in page (wired to /login)
-│   ├── register.html       # Your sign-up page (wired to /register)
-│   ├── profile.html        # Your account details page (wired to real data)
-│   ├── marketplace.html    # NEW — browse/search all listings
-│   ├── item_detail.html    # NEW — full item view + seller info
-│   ├── add_item.html       # NEW — create a listing
-│   ├── edit_item.html      # NEW — edit a listing
-│   └── my_listings.html    # NEW — a user's own listings, with edit/delete
+│   ├── index.html         
+│   ├── login.html          
+│   ├── register.html       
+│   ├── profile.html        
+│   ├── marketplace.html   
+│   ├── item_detail.html   
+│   ├── add_item.html     
+│   ├── edit_item.html      
+│   └── my_listings.html   
 └── static/
-    └── assets/css, assets/js   # Your original theme files
+    └── assets/css, assets/js  
 ```
 
 Your 4 uploaded pages were **not redesigned**. The only changes made to them
