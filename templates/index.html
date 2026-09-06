@@ -10,14 +10,14 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="assets/js/theme-switch.js"></script>
+    <script src="/static/assets/js/theme-switch.js"></script>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicon/site.webmanifest">
-    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#6366f1">
-    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/assets/favicon/safari-pinned-tab.svg" color="#6366f1">
+    <link rel="shortcut icon" href="/static/assets/favicon/favicon.ico">
     <meta name="msapplication-TileColor" content="#080032">
     <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
@@ -26,10 +26,10 @@
     <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/swiper.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/page-loading.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/theme.css">
-    <script type="text/javascript" src="assets/js/page-loading.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/swiper.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/page-loading.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/theme.css">
+    <script type="text/javascript" src="/static/assets/js/page-loading.js"></script>
   </head>
 
   <body>
@@ -42,7 +42,7 @@
     <main class="page-wrapper">
       <header class="header navbar navbar-expand-lg position-absolute navbar-sticky">
         <div class="container px-3">
-          <a href="index.html" class="navbar-brand pe-3">
+          <a href="{{ url_for('index') }}" class="navbar-brand pe-3">
             <i class="bx bx-refresh fs-2 me-1 text-primary"></i>
             Campus Swap
           </a>
@@ -58,19 +58,19 @@
                   <div class="dropdown-menu p-0">
                     <div class="d-lg-flex">
                       <div class="mega-dropdown-column d-flex justify-content-center align-items-center rounded-3 rounded-end-0 px-0" style="margin: -1px; background-color: #f3f6ff;">
-                        <img src="assets/img/landings.jpg" alt="Categories">
+                        <img src="/static/assets/img/landings.jpg" alt="Categories">
                       </div>
                       <div class="mega-dropdown-column pt-lg-3 pb-lg-4" style="--si-mega-dropdown-column-width: 15rem;">
                         <ul class="list-unstyled mb-0">
-                          <li><a href="#" class="dropdown-item">All Items</a></li>
-                          <li><a href="#" class="dropdown-item">Books & Notes</a></li>
-                          <li><a href="#" class="dropdown-item">Electronics</a></li>
-                          <li><a href="#" class="dropdown-item">Stationery<span class="badge bg-success ms-2">New</span></a></li>
+                          <li><a href="{{ url_for('marketplace') }}" class="dropdown-item">All Items</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Books') }}" class="dropdown-item">Books & Notes</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Electronics') }}" class="dropdown-item">Electronics</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Stationery') }}" class="dropdown-item">Stationery<span class="badge bg-success ms-2">New</span></a></li>
                           <li><a href="#" class="dropdown-item d-flex align-items-center">Bikes & Commute</a></li>
-                          <li><a href="#" class="dropdown-item">Furniture</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Furniture') }}" class="dropdown-item">Furniture</a></li>
                           <li><a href="#" class="dropdown-item">Dorm Gear</a></li>
-                          <li><a href="#" class="dropdown-item">Lab Equipments</a></li>
-                          <li><a href="#" class="dropdown-item">Sports Gear</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Lab Equipment') }}" class="dropdown-item">Lab Equipments</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Sports') }}" class="dropdown-item">Sports Gear</a></li>
                           <li><a href="#" class="dropdown-item">Miscellaneous<span class="badge bg-success ms-2">New</span></a></li>
                         </ul>
                       </div>
@@ -108,20 +108,30 @@
                 <li class="nav-item dropdown">
                   <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Account</a>
                   <ul class="dropdown-menu">
-                    <li><a href="profile.html" class="dropdown-item">My Profile</a></li>
-                    <li><a href="account-saved-items.html" class="dropdown-item">Saved Items</a></li>
-                    <li><a href="account-messages.html" class="dropdown-item">Messages</a></li>
-                    <li><a href="login.html" class="dropdown-item">Sign In</a></li>
-                    <li><a href="register.html" class="dropdown-item">Sign Up</a></li>
+                    {% if session.user_id %}
+                    <li><a href="{{ url_for('profile') }}" class="dropdown-item">My Profile</a></li>
+                    <li><a href="{{ url_for('my_listings') }}" class="dropdown-item">My Listings</a></li>
+                    <li><a href="{{ url_for('logout') }}" class="dropdown-item">Sign Out</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('login') }}" class="dropdown-item">Sign In</a></li>
+                    <li><a href="{{ url_for('register') }}" class="dropdown-item">Sign Up</a></li>
+                    {% endif %}
                   </ul>
                 </li>
               </ul>
             </div>
             <div class="offcanvas-header border-top">
-              <a href="login.html" class="btn btn-primary w-100">
+              {% if session.user_id %}
+              <a href="{{ url_for('add_item') }}" class="btn btn-primary w-100">
+                <i class="bx bx-plus-circle fs-4 lh-1 me-1"></i>
+                &nbsp;List an Item
+              </a>
+              {% else %}
+              <a href="{{ url_for('login') }}" class="btn btn-primary w-100">
                 <i class="bx bx-user fs-4 lh-1 me-1"></i>
                 &nbsp;Sign In
               </a>
+              {% endif %}
             </div>      
           </div>
           <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
@@ -132,10 +142,17 @@
           <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <a href="login.html" class="btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex">
+          {% if session.user_id %}
+          <a href="{{ url_for('add_item') }}" class="btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex">
+            <i class="bx bx-plus-circle fs-5 lh-1 me-1"></i>
+            &nbsp;List an Item
+          </a>
+          {% else %}
+          <a href="{{ url_for('login') }}" class="btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex">
             <i class="bx bx-user fs-5 lh-1 me-1"></i>
             &nbsp;Login / Sign Up
           </a>
+          {% endif %}
         </div>
       </header>
 
@@ -146,21 +163,21 @@
             <div class="col-lg-6 col-xl-5 text-center text-lg-start pt-5 mt-xl-4">
               <h1 class="display-4 pt-5 pb-2 pb-lg-3 mt-sm-2 mt-lg-5">Campus Swap: Book &amp; Belongings Exchange</h1>
               <p class="fs-lg mb-4 mb-lg-5">A student-focused platform that enables you to easily buy, sell, exchange, and donate items within your campus community.</p>
-              <a href="register.html" class="btn btn-primary btn-lg">Start Swapping Now</a>
+              <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg">Start Swapping Now</a>
               <div class="pt-5 mt-xl-5">
                 <h6 class="pt-xl-3 pb-3 pb-lg-4">Trusted by students across SRM Institute of Science and Technology</h6>
                 <div class="d-flex justify-content-center justify-content-lg-start mx-xl-n2">
                   <a href="#" class="d-block me-2">
-                    <img src="assets/img/brands/07.svg" width="135" alt="Logo">
+                    <img src="/static/assets/img/brands/07.svg" width="135" alt="Logo">
                   </a>
                   <a href="#" class="d-block me-2">
-                    <img src="assets/img/brands/04.svg" width="135" alt="Logo">
+                    <img src="/static/assets/img/brands/04.svg" width="135" alt="Logo">
                   </a>
                   <a href="#" class="d-block me-2">
-                    <img src="assets/img/brands/02.svg" width="135" alt="Logo">
+                    <img src="/static/assets/img/brands/02.svg" width="135" alt="Logo">
                   </a>
                   <a href="#" class="d-block me-2">
-                    <img src="assets/img/brands/05.svg" width="135" alt="Logo">
+                    <img src="/static/assets/img/brands/05.svg" width="135" alt="Logo">
                   </a>
                 </div>
               </div>
@@ -168,25 +185,25 @@
 
             <div class="parallax mt-4 ms-4 me-lg-0 ms-lg-n5 ms-xl-n3 mt-lg-n4">
               <div class="parallax-layer" data-depth="0.1">
-                <img src="assets/img/landing/saas-1/hero/layer01.png" width="1416" alt="Layer">
+                <img src="/static/assets/img/landing/saas-1/hero/layer01.png" width="1416" alt="Layer">
               </div>
               <div class="parallax-layer zindex-2" data-depth="0.15">
-                <img src="assets/img/landing/saas-1/hero/layer02.png" alt="Layer">
+                <img src="/static/assets/img/landing/saas-1/hero/layer02.png" alt="Layer">
               </div>
               <div class="parallax-layer zindex-2" data-depth="0.35">
-                <img src="assets/img/landing/saas-1/hero/layer03.png" alt="Layer">
+                <img src="/static/assets/img/landing/saas-1/hero/layer03.png" alt="Layer">
               </div>
               <div class="parallax-layer zindex-2" data-depth="0.25">
-                <img src="assets/img/landing/saas-1/hero/layer04.png" alt="Layer">
+                <img src="/static/assets/img/landing/saas-1/hero/layer04.png" alt="Layer">
               </div>
               <div class="parallax-layer zindex-2" data-depth="0.4">
-                <img src="assets/img/landing/saas-1/hero/layer05.png" alt="Layer">
+                <img src="/static/assets/img/landing/saas-1/hero/layer05.png" alt="Layer">
               </div>
               <div class="parallax-layer zindex-2" data-depth="0.28">
-                <img src="assets/img/landing/saas-1/hero/layer06.png" alt="Layer">
+                <img src="/static/assets/img/landing/saas-1/hero/layer06.png" alt="Layer">
               </div>
               <div class="parallax-layer zindex-2" data-depth="0.35">
-                <img src="assets/img/landing/saas-1/hero/layer07.png" alt="Layer">
+                <img src="/static/assets/img/landing/saas-1/hero/layer07.png" alt="Layer">
               </div>
             </div>
           </div>
@@ -260,7 +277,7 @@
       <section class="container pt-3 pt-md-4 pt-lg-5 pb-2 mt-lg-2 mt-xl-4">
         <div class="row align-items-center">
           <div class="rellax col-md-7" data-rellax-percentage="0.5" data-rellax-speed="-0.6" data-disable-parallax-down="lg">
-            <img src="assets/img/landing/saas-1/dashboard.png" class="d-block mx-auto" width="746" alt="Image">
+            <img src="/static/assets/img/landing/saas-1/dashboard.png" class="d-block mx-auto" width="746" alt="Image">
           </div>
           <div class="rellax col-md-5 col-xl-4 offset-xl-1 d-flex d-sm-block flex-column" data-rellax-percentage="0.5" data-rellax-speed="0.8" data-disable-parallax-down="lg">
             <h2 class="pb-3 pt-2 pt-md-0">How Campus Swap Works</h2>
@@ -286,7 +303,7 @@
                 Meet on campus for safe and secure exchange
               </li>
             </ul>
-            <a href="register.html" class="btn btn-primary">
+            <a href="{{ url_for('register') }}" class="btn btn-primary">
               Create your account
               <i class="bx bx-right-arrow-alt fs-xl ms-2"></i>
             </a>
@@ -332,7 +349,7 @@
                 <p>Exchange previous semester books and study materials easily. Don't let your expensive engineering textbooks gather dust on the shelf when another student desperately needs them for their upcoming courses.</p>
               </div>
               <div class="col-lg-6 col-md-7 mt-md-4">
-                <img src="assets/img/landing/saas-1/use-cases/01.png" class="d-block my-lg-2 mx-auto me-md-0" width="595" alt="Image">
+                <img src="/static/assets/img/landing/saas-1/use-cases/01.png" class="d-block my-lg-2 mx-auto me-md-0" width="595" alt="Image">
               </div>
             </div>
           </div>
@@ -344,7 +361,7 @@
                 <p>Find affordable calculators, laptops, chargers, and accessories. Upgrade your tech gear without breaking the bank by purchasing gently used devices directly from your seniors or peers on campus.</p>
               </div>
               <div class="col-lg-6 col-md-7 mt-md-4">
-                <img src="assets/img/landing/saas-1/use-cases/02.png" class="d-block my-lg-2 mx-auto me-md-0" width="502" alt="Image">
+                <img src="/static/assets/img/landing/saas-1/use-cases/02.png" class="d-block my-lg-2 mx-auto me-md-0" width="502" alt="Image">
               </div>
             </div>
           </div>
@@ -356,7 +373,7 @@
                 <p>Buy or sell furniture, lamps, organizers, and room decorations. Hostels and PGs require a lot of setup, make it easier by exchanging items with students who are moving out or graduating.</p>
               </div>
               <div class="col-lg-6 col-md-7 mt-n3 mt-md-1">
-                <img src="assets/img/landing/saas-1/use-cases/03.png" class="d-block mb-lg-2 mx-auto me-md-0" width="525" alt="Image">
+                <img src="/static/assets/img/landing/saas-1/use-cases/03.png" class="d-block mb-lg-2 mx-auto me-md-0" width="525" alt="Image">
               </div>
             </div>
           </div>
@@ -368,7 +385,7 @@
                 <p>Get around the campus easily by swapping or buying bicycles. A campus as large as SRMIST requires reliable transport. Find students selling their bikes as they graduate, ensuring a seamless transfer.</p>
               </div>
               <div class="col-lg-6 col-md-7 mt-n3 mt-md-1">
-                <img src="assets/img/landing/saas-1/use-cases/04.png" class="d-block mb-lg-2 mx-auto me-md-0" width="545" alt="Image">
+                <img src="/static/assets/img/landing/saas-1/use-cases/04.png" class="d-block mb-lg-2 mx-auto me-md-0" width="545" alt="Image">
               </div>
             </div>
           </div>
@@ -391,7 +408,7 @@
                   <div class="card-body">
                     <div class="d-flex align-items-center pb-2 pb-md-3 mb-4">
                       <div class="flex-shrink-0 bg-secondary rounded-3">
-                        <img src="assets/img/landing/saas-1/pricing/basic.png" width="84" alt="Icon">
+                        <img src="/static/assets/img/landing/saas-1/pricing/basic.png" width="84" alt="Icon">
                       </div>
                       <div class="ps-4">
                         <h3 class="fs-lg fw-normal text-body mb-2">Basic</h3>
@@ -426,7 +443,7 @@
                     </ul>
                   </div>
                   <div class="card-footer border-0 pt-0 pb-4">
-                    <a href="register.html" class="btn btn-outline-primary w-100">Sign Up Free</a>
+                    <a href="{{ url_for('register') }}" class="btn btn-outline-primary w-100">Sign Up Free</a>
                   </div>
                 </div>
               </div>
@@ -435,7 +452,7 @@
                   <div class="card-body">
                     <div class="d-flex align-items-center pb-2 pb-md-3 mb-4">
                       <div class="flex-shrink-0 rounded-3" style="background-color: rgba(255,255,255, .1);">
-                        <img src="assets/img/landing/saas-1/pricing/standard.png" width="84" alt="Icon">
+                        <img src="/static/assets/img/landing/saas-1/pricing/standard.png" width="84" alt="Icon">
                       </div>
                       <div class="ps-4">
                         <h3 class="fs-lg fw-normal text-light opacity-70 mb-2">Verified Student</h3>
@@ -479,7 +496,7 @@
                   <div class="card-body">
                     <div class="d-flex align-items-center pb-2 pb-md-3 mb-4">
                       <div class="flex-shrink-0 bg-secondary rounded-3">
-                        <img src="assets/img/landing/saas-1/pricing/ultimate.png" width="84" alt="Icon">
+                        <img src="/static/assets/img/landing/saas-1/pricing/ultimate.png" width="84" alt="Icon">
                       </div>
                       <div class="ps-4">
                         <h3 class="fs-lg fw-normal text-body mb-2">Pro Seller</h3>
@@ -571,7 +588,7 @@
                           <p class="fs-lg mb-0">Campus Swap helped me find all my 2nd-year engineering books for half the price. The chat feature made meeting up on campus so simple. Highly recommended!</p>
                         </blockquote>
                         <figcaption class="card-footer border-0 d-flex align-items-center w-100 pb-2">
-                          <img src="assets/img/avatar/14.jpg" width="60" class="rounded-circle" alt="Annette Black">
+                          <img src="/static/assets/img/avatar/14.jpg" width="60" class="rounded-circle" alt="Annette Black">
                           <div class="ps-3">
                             <h6 class="fw-semibold lh-base mb-0">Annette Black</h6>
                             <span class="fs-sm text-muted">2nd Year B.Tech CSE Student</span>
@@ -586,7 +603,7 @@
                           <p class="fs-lg mb-0">I easily sold my old bicycle before moving out of the hostel. Connecting directly with juniors instead of relying on external apps felt much safer and more reliable.</p>
                         </blockquote>
                         <figcaption class="card-footer border-0 d-flex align-items-center w-100 pb-2">
-                          <img src="assets/img/avatar/13.jpg" width="60" class="rounded-circle" alt="Ralph Edwards">
+                          <img src="/static/assets/img/avatar/13.jpg" width="60" class="rounded-circle" alt="Ralph Edwards">
                           <div class="ps-3">
                             <h6 class="fw-semibold lh-base mb-0">Ralph Edwards</h6>
                             <span class="fs-sm text-muted">Final Year ECE Student</span>
@@ -601,7 +618,7 @@
                           <p class="fs-lg mb-0">Great initiative for sustainability. I donated my old engineering drafter and actually got a study lamp in exchange. This is exactly what our campus needed.</p>
                         </blockquote>
                         <figcaption class="card-footer border-0 d-flex align-items-center w-100 pb-2">
-                          <img src="assets/img/avatar/11.jpg" width="60" class="rounded-circle" alt="Darrell Steward">
+                          <img src="/static/assets/img/avatar/11.jpg" width="60" class="rounded-circle" alt="Darrell Steward">
                           <div class="ps-3">
                             <h6 class="fw-semibold lh-base mb-0">Darrell Steward</h6>
                             <span class="fs-sm text-muted">3rd Year Mechanical Student</span>
@@ -840,11 +857,11 @@
     </a>
 
 
-    <script src="assets/js/parallax.js"></script>
-    <script src="assets/js/jarallax.js"></script>
-    <script src="assets/js/rellax.js"></script>
-    <script src="assets/js/swiper.js"></script>
+    <script src="/static/assets/js/parallax.js"></script>
+    <script src="/static/assets/js/jarallax.js"></script>
+    <script src="/static/assets/js/rellax.js"></script>
+    <script src="/static/assets/js/swiper.js"></script>
 
-    <script src="assets/js/theme.js"></script>
+    <script src="/static/assets/js/theme.js"></script>
   </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en" data-bs-theme="light">
   <head>
     <meta charset="utf-8">
-    <title>Campus Swap | Account - Sign Up</title>
+    <title>Campus Swap | Item Details</title>
 
     <meta name="description" content="Campus Swap - Book, Belongings Exchange Platform">
     <meta name="keywords" content="bootstrap, students, marketplace, campus, saas, exchange, books, college, university, shopping cart, multipurpose, shop, ui kit, marketing, seo, landing, blog, portfolio, html5, css3, javascript, gallery, slider, touch, creative">
@@ -10,14 +10,14 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="assets/js/theme-switch.js"></script>
+    <script src="/static/assets/js/theme-switch.js"></script>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicon/site.webmanifest">
-    <link rel="mask-icon" href="assets/favicon/safari-pinned-tab.svg" color="#6366f1">
-    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/assets/favicon/safari-pinned-tab.svg" color="#6366f1">
+    <link rel="shortcut icon" href="/static/assets/favicon/favicon.ico">
     <meta name="msapplication-TileColor" content="#080032">
     <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
@@ -26,12 +26,12 @@
     <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/swiper.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/page-loading.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/theme.css">
-    <script type="text/javascript" src="assets/js/page-loading.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/swiper.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/page-loading.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/theme.css">
+    <script type="text/javascript" src="/static/assets/js/page-loading.js"></script>
   </head>
-  
+
   <body>
     <div class="page-loading active">
       <div class="page-loading-inner">
@@ -40,9 +40,10 @@
     </div>
 
     <main class="page-wrapper">
-      <header class="header navbar navbar-expand-lg position-absolute navbar-sticky">
+<header class="header navbar navbar-expand-lg bg-light border-bottom border-light shadow-sm fixed-top">
         <div class="container px-3">
-          <a href="index.html" class="navbar-brand pe-3">
+          <a href="{{ url_for('index') }}" class="navbar-brand pe-3 text-primary fw-bold text-uppercase">
+            <i class="bx bx-refresh fs-3 me-2"></i>
             Campus Swap
           </a>
           <div id="navbarNav" class="offcanvas offcanvas-end">
@@ -57,11 +58,11 @@
                   <div class="dropdown-menu p-0">
                     <div class="d-lg-flex">
                       <div class="mega-dropdown-column d-flex justify-content-center align-items-center rounded-3 rounded-end-0 px-0" style="margin: -1px; background-color: #f3f6ff;">
-                        <img src="assets/img/landings.jpg" alt="Categories">
+                        <img src="/static/assets/img/landings.jpg" alt="Categories">
                       </div>
                       <div class="mega-dropdown-column pt-lg-3 pb-lg-4" style="--si-mega-dropdown-column-width: 15rem;">
                         <ul class="list-unstyled mb-0">
-                          <li><a href="index.html" class="dropdown-item">All Items</a></li>
+                          <li><a href="{{ url_for('marketplace') }}" class="dropdown-item">All Items</a></li>
                           <li><a href="landing-mobile-app-showcase-v1.html" class="dropdown-item">Books & Study Materials</a></li>
                           <li><a href="landing-mobile-app-showcase-v2.html" class="dropdown-item">Electronics & Gadgets</a></li>
                           <li><a href="landing-mobile-app-showcase-v3.html" class="dropdown-item">Stationery<span class="badge bg-success ms-2">New</span></a></li>
@@ -151,13 +152,16 @@
                   </div>
                 </li>
                 <li class="nav-item dropdown">
-                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Account</a>
+                  <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" aria-current="page">Account</a>
                   <ul class="dropdown-menu">
-                    <li><a href="profile.html" class="dropdown-item">My Profile</a></li>
-                    <li><a href="account-saved-items.html" class="dropdown-item">Saved Items</a></li>
-                    <li><a href="account-messages.html" class="dropdown-item">Messages</a></li>
-                    <li><a href="login.html" class="dropdown-item">Sign In</a></li>
-                    <li><a href="register.html" class="dropdown-item">Sign Up</a></li>
+                    {% if session.user_id %}
+                    <li><a href="{{ url_for('profile') }}" class="dropdown-item">My Profile</a></li>
+                    <li><a href="{{ url_for('my_listings') }}" class="dropdown-item">My Listings</a></li>
+                    <li><a href="{{ url_for('logout') }}" class="dropdown-item">Sign Out</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('login') }}" class="dropdown-item">Sign In</a></li>
+                    <li><a href="{{ url_for('register') }}" class="dropdown-item">Sign Up</a></li>
+                    {% endif %}
                   </ul>
                 </li>
                 <li class="nav-item">
@@ -169,9 +173,9 @@
               </ul>
             </div>
             <div class="offcanvas-header border-top">
-              <a href="login.html" class="btn btn-primary w-100">
-                <i class="bx bx-user fs-4 lh-1 me-1"></i>
-                &nbsp;Sign In
+              <a href="{{ url_for('add_item') }}" class="btn btn-primary w-100">
+                <i class="bx bx-plus-circle fs-4 lh-1 me-1"></i>
+                &nbsp;List an Item
               </a>
             </div>      
           </div>
@@ -183,100 +187,149 @@
           <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <a href="login.html" class="btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex">
-            <i class="bx bx-user fs-5 lh-1 me-1"></i>
-            &nbsp;Login / Sign Up
+          <a href="{{ url_for('add_item') }}" class="btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex">
+            <i class="bx bx-plus-circle fs-5 lh-1 me-1"></i>
+            &nbsp;List an Item
           </a>
         </div>
       </header>
 
 
-      <section class="position-relative h-100 pt-5 pb-4">
-        <div class="container d-flex flex-wrap justify-content-center justify-content-xl-start h-100 pt-5">
-          <div class="w-100 align-self-end pt-1 pt-md-4 pb-4" style="max-width: 526px;">
-            <h1 class="text-center text-xl-start">Join Campus Swap</h1>
-            <p class="text-center text-xl-start pb-3 mb-3">Already have a student account? <a href="account-signin.html">Sign in here.</a></p>
-            <form class="needs-validation" novalidate>
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="position-relative mb-4">
-                    <label for="name" class="form-label fs-base">Full Name</label>
-                    <input type="text" id="name" class="form-control form-control-lg" required>
-                    <div class="invalid-feedback position-absolute start-0 top-100">Please enter your name!</div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="position-relative mb-4">
-                    <label for="email" class="form-label fs-base">College Email ID</label>
-                    <input type="email" id="email" class="form-control form-control-lg" placeholder="netid@srmist.edu.in" required>
-                    <div class="invalid-feedback position-absolute start-0 top-100">Please enter a valid email address!</div>
-                  </div>
-                </div>
-                <div class="col-12 mb-4">
-                  <label for="password" class="form-label fs-base">Password</label>
-                  <div class="password-toggle">
-                    <input type="password" id="password" class="form-control form-control-lg" required>
-                    <label class="password-toggle-btn" aria-label="Show/hide password">
-                      <input class="password-toggle-check" type="checkbox">
-                      <span class="password-toggle-indicator"></span>
-                    </label>
-                    <div class="invalid-feedback position-absolute start-0 top-100">Please enter a password!</div>
-                  </div>
-                </div>
-                <div class="col-12 mb-4">
-                  <label for="password-confirm" class="form-label fs-base">Confirm Password</label>
-                  <div class="password-toggle">
-                    <input type="password" id="password-confirm" class="form-control form-control-lg" required>
-                    <label class="password-toggle-btn" aria-label="Show/hide password">
-                      <input class="password-toggle-check" type="checkbox">
-                      <span class="password-toggle-indicator"></span>
-                    </label>
-                    <div class="invalid-feedback position-absolute start-0 top-100">Please enter a password!</div>
-                  </div>
-                </div>
-              </div>
-              <div class="mb-4">
-                <div class="form-check">
-                  <input type="checkbox" id="terms" class="form-check-input">
-                  <label for="terms" class="form-check-label fs-base">I agree to the <a href="#">Terms &amp; Safety Guidelines</a></label>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-primary shadow-primary btn-lg w-100">Sign up</button>
-            </form>
-            <hr class="my-4">
-            <h6 class="text-center mb-4">Or sign up with your student network</h6>
-            <div class="row row-cols-1 row-cols-sm-2">
-              <div class="col mb-3">
-                <a href="#" class="btn btn-icon btn-secondary btn-google btn-lg w-100">
-                  <i class="bx bxl-google fs-xl me-2"></i>
-                  Google
-                </a>
-              </div>
-              <div class="col mb-3">
-                <a href="#" class="btn btn-icon btn-secondary btn-facebook btn-lg w-100">
-                  <i class="bx bxl-facebook fs-xl me-2"></i>
-                  Facebook
-                </a>
-              </div>
+      <section class="container pt-5">
+        <nav class="pb-4">
+          <a href="{{ url_for('marketplace') }}" class="text-decoration-none">
+            <i class="bx bx-left-arrow-alt fs-5 me-1"></i>Back to Marketplace
+          </a>
+        </nav>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="alert alert-{{ 'danger' if category == 'error' else category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <div class="row pb-5">
+          <div class="col-lg-6 pb-4 pb-lg-0">
+            <div class="bg-secondary bg-opacity-10 rounded-3 d-flex align-items-center justify-content-center" style="height: 380px; overflow: hidden;">
+              {% if item.image_url %}
+              <img src="{{ item.image_url }}" class="w-100 h-100" style="object-fit: cover;" alt="{{ item.title }}">
+              {% else %}
+              <i class="bx bx-image fs-1 text-muted" style="font-size: 4rem;"></i>
+              {% endif %}
             </div>
           </div>
-          <div class="w-100 align-self-end">
-            <p class="nav d-block fs-xs text-center text-xl-start pb-2 mb-0">
-              &copy; 2026 All rights reserved. Made by 
-              <a class="nav-link d-inline-block p-0" href="#" target="_blank" rel="noopener">Campus Swap Team</a>
-            </p>    
+          <div class="col-lg-6">
+            <span class="badge bg-secondary text-dark mb-2">{{ item.category }}</span>
+            <span class="badge bg-light text-dark border mb-2">{{ item.item_condition }}</span>
+            <h1 class="h2 mb-2">{{ item.title }}</h1>
+            <p class="fs-3 text-primary fw-bold mb-3">
+              {% if item.price and item.price > 0 %}&#8377;{{ '%.2f'|format(item.price) }}{% else %}Free / Swap{% endif %}
+            </p>
+            <p class="mb-4">{{ item.description or 'No description provided.' }}</p>
+
+            <div class="card border-0 bg-light p-3 mb-4">
+              <h2 class="h6 mb-2">Seller Information</h2>
+              <p class="mb-1"><i class="bx bx-user fs-6 me-1"></i>{{ item.first_name }} {{ item.last_name }}</p>
+              {% if item.campus %}<p class="mb-1"><i class="bx bx-buildings fs-6 me-1"></i>{{ item.campus }}</p>{% endif %}
+              {% if is_owner or session.user_id %}
+              <p class="mb-1"><i class="bx bx-envelope fs-6 me-1"></i>{{ item.seller_email }}</p>
+              {% if item.seller_phone %}<p class="mb-0"><i class="bx bx-phone fs-6 me-1"></i>{{ item.seller_phone }}</p>{% endif %}
+              {% endif %}
+            </div>
+
+            {% if is_owner %}
+            <div class="d-flex gap-2">
+              <a href="{{ url_for('edit_item', item_id=item.id) }}" class="btn btn-primary">
+                <i class="bx bx-edit fs-5 me-1"></i>Edit Listing
+              </a>
+              <form method="POST" action="{{ url_for('delete_item', item_id=item.id) }}" onsubmit="return confirm('Delete this listing? This cannot be undone.');">
+                <button type="submit" class="btn btn-outline-danger">
+                  <i class="bx bx-trash fs-5 me-1"></i>Delete
+                </button>
+              </form>
+            </div>
+            {% elif not session.user_id %}
+            <a href="{{ url_for('login') }}" class="btn btn-primary">Sign in to contact seller</a>
+            {% endif %}
           </div>
         </div>
-
-        <div class="position-absolute top-0 end-0 w-50 h-100 bg-position-center bg-repeat-0 bg-size-cover d-none d-xl-block" style="background-image: url(assets/img/account/signin-bg.jpg);"></div>
       </section>
     </main>
 
-    <a href="#top" class="btn-scroll-top" data-scroll>
+
+<footer class="footer bg-dark border-top border-light pt-5 pb-4 pb-lg-5" data-bs-theme="dark">
+      <div class="container pt-lg-4">
+        <div class="row pb-5">
+          <div class="col-lg-4 col-md-6">
+            <div class="navbar-brand text-dark p-0 me-0 mb-3 mb-lg-4 text-uppercase">
+              <i class="bx bx-refresh fs-3 text-primary me-2"></i>
+              Campus Swap
+            </div>
+            <p class="fs-sm text-light opacity-70 pb-lg-3 mb-4">Campus Swap is a student-focused platform that enables students to easily buy, sell, exchange, and donate items within their campus community.</p>
+            <form class="needs-validation" novalidate>
+              <label for="subscr-email" class="form-label">Subscribe to campus updates</label>
+              <div class="input-group">
+                <input type="email" id="subscr-email" class="form-control rounded-start ps-5" placeholder="Your college email" required>
+                <i class="bx bx-envelope fs-lg text-muted position-absolute top-50 start-0 translate-middle-y ms-3 zindex-5"></i>
+                <div class="invalid-tooltip position-absolute top-100 start-0">Please provide a valid email address.</div>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+              </div>
+            </form>
+          </div>
+          <div class="col-xl-6 col-lg-7 col-md-5 offset-xl-2 offset-md-1 pt-4 pt-md-1 pt-lg-0">
+            <div id="footer-links" class="row">
+              <div class="col-lg-4">
+                <h6 class="mb-2">
+                  <a href="#useful-links" class="d-block text-dark dropdown-toggle d-lg-none py-2" data-bs-toggle="collapse">Useful Links</a>
+                </h6>
+                <div id="useful-links" class="collapse d-lg-block" data-bs-parent="#footer-links">
+                  <ul class="nav flex-column pb-lg-1 mb-lg-3">
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">About Us</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">How It Works</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">Safety Guidelines</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">Blog</a></li>
+                  </ul>
+                  <ul class="nav flex-column mb-2 mb-lg-0">
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">Terms &amp; Conditions</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">Privacy Policy</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-3">
+                <h6 class="mb-2">
+                  <a href="#social-links" class="d-block text-dark dropdown-toggle d-lg-none py-2" data-bs-toggle="collapse">Socials</a>
+                </h6>
+                <div id="social-links" class="collapse d-lg-block" data-bs-parent="#footer-links">
+                  <ul class="nav flex-column mb-2 mb-lg-0">
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">Facebook</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">LinkedIn</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">Twitter</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link d-inline-block px-0 pt-1 pb-2">Instagram</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-xl-4 col-lg-5 pt-2 pt-lg-0">
+                <h6 class="mb-2">Contact Us</h6>
+                <a href="mailto:support@campusswap.com" class="fw-medium">support@campusswap.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="nav d-block fs-xs text-center text-md-start pb-2 pb-lg-0 mb-0">
+          <span class="text-light opacity-50">&copy; 2026 All rights reserved. Made by </span>
+          <a class="nav-link d-inline-block p-0" href="#" target="_blank" rel="noopener">Campus Swap Team</a>
+        </p>
+      </div>
+    </footer><a href="#top" class="btn-scroll-top" data-scroll>
       <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">Top</span>
       <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
     </a>
 
-    <script src="assets/js/theme.js"></script>
+    <script src="/static/assets/js/cleave.js"></script>
+
+    <script src="/static/assets/js/theme.js"></script>
   </body>
 </html>

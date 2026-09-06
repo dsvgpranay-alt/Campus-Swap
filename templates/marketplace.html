@@ -1,0 +1,576 @@
+```html
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <meta charset="utf-8">
+    <title>Campus Swap | Marketplace</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="/static/assets/js/theme-switch.js"></script>
+
+    <link rel="stylesheet" href="/static/assets/css/swiper.css">
+    <link rel="stylesheet" href="/static/assets/css/page-loading.css">
+    <link rel="stylesheet" href="/static/assets/css/theme.css">
+
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
+
+    <script src="/static/assets/js/page-loading.js"></script>
+</head>
+
+<body>
+
+<div class="page-loading active">
+    <div class="page-loading-inner">
+        <div class="page-spinner"></div>
+        <span>Loading...</span>
+    </div>
+</div>
+
+<main class="page-wrapper">
+
+    <header class="header navbar navbar-expand-lg bg-light border-bottom border-light shadow-sm fixed-top">
+        <div class="container px-3">
+
+            <a href="{{ url_for('index') }}"
+               class="navbar-brand pe-3 text-primary fw-bold text-uppercase">
+                <i class="bx bx-refresh fs-3 me-2"></i>
+                Campus Swap
+            </a>
+
+            <div id="navbarNav" class="offcanvas offcanvas-end">
+
+                <div class="offcanvas-header border-bottom">
+                    <h5 class="offcanvas-title">Menu</h5>
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="offcanvas">
+                    </button>
+                </div>
+
+                <div class="offcanvas-body">
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                        <li class="nav-item dropdown">
+
+                            <a href="#"
+                               class="nav-link dropdown-toggle active"
+                               data-bs-toggle="dropdown">
+                                Categories
+                            </a>
+
+                            <div class="dropdown-menu p-0">
+
+                                <div class="d-lg-flex">
+
+                                    <div class="mega-dropdown-column d-flex justify-content-center align-items-center rounded-3 rounded-end-0 px-0"
+                                         style="margin:-1px; background-color:#f3f6ff;">
+
+                                        <img src="/static/assets/img/landings.jpg"
+                                             alt="Categories">
+
+                                    </div>
+
+                                    <div class="mega-dropdown-column pt-lg-3 pb-lg-4">
+
+                                        <ul class="list-unstyled mb-0">
+
+                                            <li>
+                                                <a href="{{ url_for('marketplace') }}"
+                                                   class="dropdown-item">
+                                                    All Items
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="{{ url_for('marketplace', category='Books') }}"
+                                                   class="dropdown-item">
+                                                    Books & Study Materials
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="{{ url_for('marketplace', category='Electronics') }}"
+                                                   class="dropdown-item">
+                                                    Electronics & Gadgets
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="{{ url_for('marketplace', category='Stationery') }}"
+                                                   class="dropdown-item">
+                                                    Stationery
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="{{ url_for('marketplace', category='Lab Equipment') }}"
+                                                   class="dropdown-item">
+                                                    Lab Equipment
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="{{ url_for('marketplace', category='Furniture') }}"
+                                                   class="dropdown-item">
+                                                    Furniture
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </div>
+
+                                    <div class="mega-dropdown-column pt-lg-3 pb-lg-4">
+
+                                        <ul class="list-unstyled mb-0">
+
+                                            <li>
+                                                <a href="{{ url_for('marketplace', category='Clothing') }}"
+                                                   class="dropdown-item">
+                                                    Clothing
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="{{ url_for('marketplace', category='Sports') }}"
+                                                   class="dropdown-item">
+                                                    Sports
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="{{ url_for('marketplace', category='Accessories') }}"
+                                                   class="dropdown-item">
+                                                    Accessories
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="{{ url_for('marketplace', category='Other') }}"
+                                                   class="dropdown-item">
+                                                    Other
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="{{ url_for('marketplace') }}"
+                               class="nav-link">
+                                Marketplace
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                Community
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                Guides
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                FAQ
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div class="offcanvas-header border-top">
+
+                    <a href="{{ url_for('add_item') }}"
+                       class="btn btn-primary w-100">
+
+                        <i class="bx bx-plus-circle fs-4 lh-1 me-1"></i>
+                        List an Item
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4"
+                 data-bs-toggle="mode">
+
+                <input type="checkbox"
+                       class="form-check-input"
+                       id="theme-mode">
+
+                <label class="form-check-label d-none d-sm-block"
+                       for="theme-mode">
+                    Light
+                </label>
+
+                <label class="form-check-label d-none d-sm-block"
+                       for="theme-mode">
+                    Dark
+                </label>
+
+            </div>
+
+            <button type="button"
+                    class="navbar-toggler"
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#navbarNav">
+
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <a href="{{ url_for('add_item') }}"
+               class="btn btn-primary btn-sm d-none d-lg-inline-flex">
+
+                <i class="bx bx-plus-circle fs-5 lh-1 me-1"></i>
+                List an Item
+
+            </a>
+
+        </div>
+    </header>
+
+    <section class="container pt-5">
+
+        <div class="d-flex flex-wrap justify-content-between align-items-center pt-4 pb-4">
+
+            <div>
+
+                <h1 class="h2 mb-1">
+
+                    {% if selected_category %}
+                        {{ selected_category }}
+                    {% else %}
+                        Browse the Marketplace
+                    {% endif %}
+
+                </h1>
+
+                <p class="text-muted mb-0">
+
+                    {{ items|length }} item{{ 's' if items|length != 1 }} available
+
+                </p>
+
+            </div>
+
+            {% if session.user_id %}
+
+                <a href="{{ url_for('add_item') }}"
+                   class="btn btn-primary">
+
+                    <i class="bx bx-plus-circle fs-5 lh-1 me-1"></i>
+                    List an Item
+
+                </a>
+
+            {% endif %}
+
+        </div>
+
+        <form method="GET"
+              action="{{ url_for('marketplace') }}"
+              class="row g-2 pb-4">
+
+            <div class="col-sm-6 col-md-7">
+
+                <input type="text"
+                       name="q"
+                       value="{{ q }}"
+                       class="form-control form-control-lg"
+                       placeholder="Search items by title or description">
+
+            </div>
+
+            <div class="col-sm-4 col-md-3">
+
+                <select name="category"
+                        class="form-select form-select-lg">
+
+                    <option value="">
+                        All Categories
+                    </option>
+
+                    {% for c in categories %}
+
+                        <option value="{{ c }}"
+                                {% if c == selected_category %}selected{% endif %}>
+
+                            {{ c }}
+
+                        </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <div class="col-sm-2">
+
+                <button type="submit"
+                        class="btn btn-secondary btn-lg w-100">
+
+                    <i class="bx bx-search fs-5"></i>
+
+                </button>
+
+            </div>
+
+        </form>
+
+        <div class="d-flex flex-wrap gap-2 mb-4">
+
+            <a href="{{ url_for('marketplace') }}"
+               class="btn {% if not selected_category %}btn-primary{% else %}btn-outline-primary{% endif %}">
+
+                All
+
+            </a>
+
+            {% for c in categories %}
+
+                <a href="{{ url_for('marketplace', category=c) }}"
+                   class="btn {% if selected_category == c %}btn-primary{% else %}btn-outline-primary{% endif %}">
+
+                    {{ c }}
+
+                </a>
+
+            {% endfor %}
+
+        </div>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4 pb-5">
+
+            {% for item in items %}
+
+                <div class="col">
+
+                    <div class="card h-100 border-0 shadow-sm">
+
+                        <a href="{{ url_for('item_detail', item_id=item.id) }}"
+                           class="d-block bg-secondary bg-opacity-10 d-flex align-items-center justify-content-center"
+                           style="height:200px; overflow:hidden;">
+
+                            {% if item.image_url %}
+
+                                <img src="{{ item.image_url }}"
+                                     class="w-100 h-100"
+                                     style="object-fit:cover;"
+                                     alt="{{ item.title }}">
+
+                            {% else %}
+
+                                <i class="bx bx-image fs-1 text-muted"></i>
+
+                            {% endif %}
+
+                        </a>
+
+                        <div class="card-body">
+
+                            <div class="mb-2">
+
+                                <span class="badge bg-secondary text-dark">
+                                    {{ item.category }}
+                                </span>
+
+                                <span class="badge bg-light text-dark border">
+                                    {{ item.item_condition }}
+                                </span>
+
+                            </div>
+
+                            <h3 class="h6 mb-1">
+
+                                <a href="{{ url_for('item_detail', item_id=item.id) }}"
+                                   class="text-reset text-decoration-none">
+
+                                    {{ item.title }}
+
+                                </a>
+
+                            </h3>
+
+                            <p class="text-primary fw-bold mb-1">
+
+                                {% if item.price and item.price > 0 %}
+
+                                    &#8377;{{ '%.2f'|format(item.price) }}
+
+                                {% else %}
+
+                                    Free / Swap
+
+                                {% endif %}
+
+                            </p>
+
+                            <p class="fs-sm text-muted mb-0">
+
+                                <i class="bx bx-user fs-6 me-1"></i>
+
+                                {{ item.first_name }} {{ item.last_name }}
+
+                                {% if item.campus %}
+                                    &middot; {{ item.campus }}
+                                {% endif %}
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% else %}
+
+                <div class="col-12 text-center py-5">
+
+                    <i class="bx bx-package fs-1 text-muted mb-3 d-block"></i>
+
+                    <p class="fs-lg text-muted">
+                        No listings found.
+                    </p>
+
+                    {% if session.user_id %}
+
+                        <a href="{{ url_for('add_item') }}">
+                            List an item
+                        </a>
+
+                    {% else %}
+
+                        <a href="{{ url_for('login') }}">
+                            Sign in
+                        </a>
+
+                    {% endif %}
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer class="footer bg-dark border-top border-light pt-5 pb-4"
+        data-bs-theme="dark">
+
+    <div class="container pt-lg-4">
+
+        <div class="row pb-5">
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="navbar-brand text-dark p-0 me-0 mb-3 text-uppercase">
+
+                    <i class="bx bx-refresh fs-3 text-primary me-2"></i>
+                    Campus Swap
+
+                </div>
+
+                <p class="fs-sm text-light opacity-70">
+
+                    Campus Swap helps students buy, sell and exchange
+                    items within their campus community.
+
+                </p>
+
+            </div>
+
+            <div class="col-lg-4 offset-lg-2">
+
+                <h6 class="mb-2">
+                    Categories
+                </h6>
+
+                <ul class="nav flex-column">
+
+                    <li class="nav-item">
+                        <a href="{{ url_for('marketplace', category='Books') }}"
+                           class="nav-link px-0">
+                            Books
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ url_for('marketplace', category='Electronics') }}"
+                           class="nav-link px-0">
+                            Electronics
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ url_for('marketplace', category='Stationery') }}"
+                           class="nav-link px-0">
+                            Stationery
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{ url_for('marketplace', category='Furniture') }}"
+                           class="nav-link px-0">
+                            Furniture
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+        <p class="nav d-block fs-xs text-center text-md-start mb-0">
+
+            <span class="text-light opacity-50">
+                &copy; 2026 Campus Swap. All rights reserved.
+            </span>
+
+        </p>
+
+    </div>
+
+</footer>
+
+<a href="#top"
+   class="btn-scroll-top"
+   data-scroll>
+
+    <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">
+        Top
+    </span>
+
+    <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+
+</a>
+
+<script src="/static/assets/js/cleave.js"></script>
+<script src="/static/assets/js/theme.js"></script>
+
+</body>
+</html>
+```

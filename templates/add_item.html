@@ -1,0 +1,912 @@
+```html
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <title>Campus Swap | List an Item</title>
+
+    <meta name="description" content="Campus Swap - Book, Belongings Exchange Platform">
+    <meta name="keywords" content="bootstrap, students, marketplace, campus, exchange, books, college, university">
+    <meta name="author" content="Campus Swap Team">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="/static/assets/js/theme-switch.js"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/static/assets/favicon/site.webmanifest">
+    <link rel="mask-icon" href="/static/assets/favicon/safari-pinned-tab.svg" color="#6366f1">
+    <link rel="shortcut icon" href="/static/assets/favicon/favicon.ico">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
+    <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/swiper.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/page-loading.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/theme.css">
+
+    <script src="/static/assets/js/page-loading.js"></script>
+  </head>
+
+  <body>
+
+    <div class="page-loading active">
+      <div class="page-loading-inner">
+        <div class="page-spinner"></div>
+        <span>Loading...</span>
+      </div>
+    </div>
+
+    <main class="page-wrapper">
+
+      <header class="header navbar navbar-expand-lg bg-light border-bottom border-light shadow-sm fixed-top">
+
+        <div class="container px-3">
+
+          <a href="{{ url_for('index') }}"
+             class="navbar-brand pe-3 text-primary fw-bold text-uppercase">
+            <i class="bx bx-refresh fs-3 me-2"></i>
+            Campus Swap
+          </a>
+
+          <div id="navbarNav" class="offcanvas offcanvas-end">
+
+            <div class="offcanvas-header border-bottom">
+              <h5 class="offcanvas-title">Menu</h5>
+
+              <button type="button"
+                      class="btn-close"
+                      data-bs-dismiss="offcanvas"
+                      aria-label="Close">
+              </button>
+            </div>
+
+            <div class="offcanvas-body">
+
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item dropdown">
+
+                  <a href="#"
+                     class="nav-link dropdown-toggle"
+                     data-bs-toggle="dropdown">
+                    Categories
+                  </a>
+
+                  <div class="dropdown-menu p-0">
+
+                    <div class="d-lg-flex">
+
+                      <div class="mega-dropdown-column d-flex justify-content-center align-items-center rounded-3 rounded-end-0 px-0"
+                           style="margin: -1px; background-color: #f3f6ff;">
+
+                        <img src="/static/assets/img/landings.jpg"
+                             alt="Categories">
+
+                      </div>
+
+                      <div class="mega-dropdown-column pt-lg-3 pb-lg-4"
+                           style="--si-mega-dropdown-column-width: 15rem;">
+
+                        <ul class="list-unstyled mb-0">
+
+                          <li>
+                            <a href="{{ url_for('marketplace') }}"
+                               class="dropdown-item">
+                              All Items
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="{{ url_for('marketplace', category='Books') }}"
+                               class="dropdown-item">
+                              Books
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="{{ url_for('marketplace', category='Electronics') }}"
+                               class="dropdown-item">
+                              Electronics
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="{{ url_for('marketplace', category='Stationery') }}"
+                               class="dropdown-item">
+                              Stationery
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="{{ url_for('marketplace', category='Lab Equipment') }}"
+                               class="dropdown-item">
+                              Lab Equipment
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="{{ url_for('marketplace', category='Furniture') }}"
+                               class="dropdown-item">
+                              Furniture
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="{{ url_for('marketplace', category='Clothing') }}"
+                               class="dropdown-item">
+                              Clothing
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="{{ url_for('marketplace', category='Sports') }}"
+                               class="dropdown-item">
+                              Sports
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="{{ url_for('marketplace', category='Accessories') }}"
+                               class="dropdown-item">
+                              Accessories
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="{{ url_for('marketplace', category='Other') }}"
+                               class="dropdown-item">
+                              Other
+                            </a>
+                          </li>
+
+                        </ul>
+
+                      </div>
+
+                      <div class="mega-dropdown-column pt-lg-3 pb-lg-4">
+
+                        <ul class="list-unstyled mb-0">
+
+                          <li>
+                            <a href="{{ url_for('marketplace') }}"
+                               class="dropdown-item">
+                              Latest Listings
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="{{ url_for('marketplace') }}"
+                               class="dropdown-item">
+                              Most Popular
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="{{ url_for('marketplace', category='Books') }}"
+                               class="dropdown-item">
+                              Textbooks
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="{{ url_for('marketplace', category='Electronics') }}"
+                               class="dropdown-item">
+                              Gadgets
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="{{ url_for('marketplace', category='Stationery') }}"
+                               class="dropdown-item">
+                              Study Materials
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="{{ url_for('marketplace', category='Sports') }}"
+                               class="dropdown-item">
+                              Sports Gear
+                            </a>
+                          </li>
+
+                        </ul>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </li>
+
+                <li class="nav-item dropdown">
+
+                  <a href="#"
+                     class="nav-link dropdown-toggle"
+                     data-bs-toggle="dropdown">
+                    Community
+                  </a>
+
+                  <div class="dropdown-menu">
+
+                    <div class="d-lg-flex pt-lg-3">
+
+                      <div class="mega-dropdown-column">
+
+                        <h6 class="px-3 mb-2">
+                          About Us
+                        </h6>
+
+                        <ul class="list-unstyled mb-3">
+
+                          <li>
+                            <a href="#" class="dropdown-item py-1">
+                              Our Mission
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="#" class="dropdown-item py-1">
+                              Safety Guidelines
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="#" class="dropdown-item py-1">
+                              How It Works
+                            </a>
+                          </li>
+
+                        </ul>
+
+                        <h6 class="px-3 mb-2">
+                          Support
+                        </h6>
+
+                        <ul class="list-unstyled mb-3">
+
+                          <li>
+                            <a href="#" class="dropdown-item py-1">
+                              Help Center
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="#" class="dropdown-item py-1">
+                              Report an Issue
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="#" class="dropdown-item py-1">
+                              Contact Support
+                            </a>
+                          </li>
+
+                        </ul>
+
+                      </div>
+
+                      <div class="mega-dropdown-column">
+
+                        <h6 class="px-3 mb-2">
+                          Featured
+                        </h6>
+
+                        <ul class="list-unstyled mb-3">
+
+                          <li>
+                            <a href="{{ url_for('marketplace') }}"
+                               class="dropdown-item py-1">
+                              Featured Swaps
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="{{ url_for('marketplace') }}"
+                               class="dropdown-item py-1">
+                              Recent Listings
+                            </a>
+                          </li>
+
+                          <li>
+                            <a href="{{ url_for('marketplace') }}"
+                               class="dropdown-item py-1">
+                              Top Sellers
+                            </a>
+                          </li>
+
+                        </ul>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+
+                </li>
+
+                <li class="nav-item dropdown">
+
+                  <a href="#"
+                     class="nav-link dropdown-toggle active"
+                     data-bs-toggle="dropdown"
+                     aria-current="page">
+                    Account
+                  </a>
+
+                  <ul class="dropdown-menu">
+
+                    {% if session.user_id %}
+
+                    <li>
+                      <a href="{{ url_for('profile') }}"
+                         class="dropdown-item">
+                        My Profile
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="{{ url_for('my_listings') }}"
+                         class="dropdown-item">
+                        My Listings
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="{{ url_for('logout') }}"
+                         class="dropdown-item">
+                        Sign Out
+                      </a>
+                    </li>
+
+                    {% else %}
+
+                    <li>
+                      <a href="{{ url_for('login') }}"
+                         class="dropdown-item">
+                        Sign In
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="{{ url_for('register') }}"
+                         class="dropdown-item">
+                        Sign Up
+                      </a>
+                    </li>
+
+                    {% endif %}
+
+                  </ul>
+
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    Guides
+                  </a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    FAQ
+                  </a>
+                </li>
+
+              </ul>
+
+            </div>
+
+            <div class="offcanvas-header border-top">
+
+              <a href="{{ url_for('add_item') }}"
+                 class="btn btn-primary w-100">
+
+                <i class="bx bx-plus-circle fs-4 lh-1 me-1"></i>
+                &nbsp;List an Item
+
+              </a>
+
+            </div>
+
+          </div>
+
+          <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4"
+               data-bs-toggle="mode">
+
+            <input type="checkbox"
+                   class="form-check-input"
+                   id="theme-mode">
+
+            <label class="form-check-label d-none d-sm-block"
+                   for="theme-mode">
+              Light
+            </label>
+
+            <label class="form-check-label d-none d-sm-block"
+                   for="theme-mode">
+              Dark
+            </label>
+
+          </div>
+
+          <button type="button"
+                  class="navbar-toggler"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#navbarNav"
+                  aria-controls="navbarNav"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation">
+
+            <span class="navbar-toggler-icon"></span>
+
+          </button>
+
+          <a href="{{ url_for('add_item') }}"
+             class="btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex">
+
+            <i class="bx bx-plus-circle fs-5 lh-1 me-1"></i>
+            &nbsp;List an Item
+
+          </a>
+
+        </div>
+
+      </header>
+
+      <section class="container pt-5">
+
+        <div class="row justify-content-center">
+
+          <div class="col-lg-7">
+
+            <h1 class="h2 pb-3">
+              List an Item
+            </h1>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+
+              {% if messages %}
+
+                {% for category, message in messages %}
+
+                  <div class="alert alert-{{ 'danger' if category == 'error' else category }}">
+                    {{ message }}
+                  </div>
+
+                {% endfor %}
+
+              {% endif %}
+
+            {% endwith %}
+
+            <form class="needs-validation"
+                  method="POST"
+                  action="{{ url_for('add_item') }}"
+                  novalidate>
+
+              <div class="mb-4">
+
+                <label for="title"
+                       class="form-label fs-base">
+                  Item Title
+                </label>
+
+                <input type="text"
+                       name="title"
+                       id="title"
+                       class="form-control form-control-lg"
+                       placeholder="e.g., Data Structures Textbook (3rd Edition)"
+                       required>
+
+              </div>
+
+              <div class="mb-4">
+
+                <div class="d-flex justify-content-between align-items-center mb-2">
+
+                  <label for="description"
+                         class="form-label fs-base mb-0">
+                    Description
+                  </label>
+
+                  <button type="button"
+                          id="generateBtn"
+                          class="btn btn-sm btn-outline-primary"
+                          onclick="generateDescription()">
+                    ✨ Generate with AI
+                  </button>
+
+                </div>
+
+                <textarea name="description"
+                          id="description"
+                          class="form-control form-control-lg"
+                          rows="4"
+                          placeholder="Condition details, edition, syllabus year, why you're selling, etc."></textarea>
+
+                <small id="aiMessage"
+                       class="text-muted">
+                </small>
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-sm-6 mb-4">
+
+                  <label for="price"
+                         class="form-label fs-base">
+                    Price (&#8377;)
+                    <small class="text-muted">
+                      (0 for free/swap)
+                    </small>
+                  </label>
+
+                  <input type="number"
+                         name="price"
+                         id="price"
+                         min="0"
+                         step="0.01"
+                         class="form-control form-control-lg"
+                         placeholder="0.00">
+
+                </div>
+
+                <div class="col-sm-6 mb-4">
+
+                  <label for="condition"
+                         class="form-label fs-base">
+                    Condition
+                  </label>
+
+                  <select name="condition"
+                          id="condition"
+                          class="form-select form-select-lg"
+                          required>
+
+                    <option value=""
+                            disabled
+                            selected>
+                      Choose condition
+                    </option>
+
+                    {% for c in conditions %}
+
+                    <option value="{{ c }}">
+                      {{ c }}
+                    </option>
+
+                    {% endfor %}
+
+                  </select>
+
+                </div>
+
+              </div>
+
+              <div class="mb-4">
+
+                <label for="category"
+                       class="form-label fs-base">
+                  Category
+                </label>
+
+                <select name="category"
+                        id="category"
+                        class="form-select form-select-lg"
+                        required>
+
+                  <option value=""
+                          disabled
+                          selected>
+                    Choose category
+                  </option>
+
+                  {% for c in categories %}
+
+                  <option value="{{ c }}">
+                    {{ c }}
+                  </option>
+
+                  {% endfor %}
+
+                </select>
+
+              </div>
+
+              <div class="mb-4">
+
+                <label for="image_url"
+                       class="form-label fs-base">
+                  Image URL
+                  <small class="text-muted">
+                    (optional)
+                  </small>
+                </label>
+
+                <input type="text"
+                       name="image_url"
+                       id="image_url"
+                       class="form-control form-control-lg"
+                       placeholder="https://... (link to a photo of the item)">
+
+              </div>
+
+              <div class="d-flex mb-3">
+
+                <a href="{{ url_for('marketplace') }}"
+                   class="btn btn-secondary me-3">
+                  Cancel
+                </a>
+
+                <button type="submit"
+                        class="btn btn-primary">
+                  Publish Listing
+                </button>
+
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer class="footer bg-dark border-top border-light pt-5 pb-4 pb-lg-5"
+            data-bs-theme="dark">
+
+      <div class="container pt-lg-4">
+
+        <div class="row pb-5">
+
+          <div class="col-lg-4 col-md-6">
+
+            <div class="navbar-brand text-dark p-0 me-0 mb-3 mb-lg-4 text-uppercase">
+
+              <i class="bx bx-refresh fs-3 text-primary me-2"></i>
+              Campus Swap
+
+            </div>
+
+            <p class="fs-sm text-light opacity-70 pb-lg-3 mb-4">
+              Campus Swap is a student-focused platform that enables students
+              to easily buy, sell, exchange, and donate items within their
+              campus community.
+            </p>
+
+            <form class="needs-validation" novalidate>
+
+              <label for="subscr-email"
+                     class="form-label">
+                Subscribe to campus updates
+              </label>
+
+              <div class="input-group">
+
+                <input type="email"
+                       id="subscr-email"
+                       class="form-control rounded-start ps-5"
+                       placeholder="Your college email"
+                       required>
+
+                <i class="bx bx-envelope fs-lg text-muted position-absolute top-50 start-0 translate-middle-y ms-3 zindex-5"></i>
+
+                <div class="invalid-tooltip position-absolute top-100 start-0">
+                  Please provide a valid email address.
+                </div>
+
+                <button type="submit"
+                        class="btn btn-primary">
+                  Subscribe
+                </button>
+
+              </div>
+
+            </form>
+
+          </div>
+
+          <div class="col-xl-6 col-lg-7 col-md-5 offset-xl-2 offset-md-1 pt-4 pt-md-1 pt-lg-0">
+
+            <div id="footer-links"
+                 class="row">
+
+              <div class="col-lg-4">
+
+                <h6 class="mb-2">
+                  <a href="#useful-links"
+                     class="d-block text-dark dropdown-toggle d-lg-none py-2"
+                     data-bs-toggle="collapse">
+                    Useful Links
+                  </a>
+                </h6>
+
+                <div id="useful-links"
+                     class="collapse d-lg-block"
+                     data-bs-parent="#footer-links">
+
+                  <ul class="nav flex-column pb-lg-1 mb-lg-3">
+
+                    <li class="nav-item">
+                      <a href="{{ url_for('index') }}"
+                         class="nav-link d-inline-block px-0 pt-1 pb-2">
+                        Home
+                      </a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a href="{{ url_for('marketplace') }}"
+                         class="nav-link d-inline-block px-0 pt-1 pb-2">
+                        Marketplace
+                      </a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a href="{{ url_for('profile') }}"
+                         class="nav-link d-inline-block px-0 pt-1 pb-2">
+                        Profile
+                      </a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a href="{{ url_for('my_listings') }}"
+                         class="nav-link d-inline-block px-0 pt-1 pb-2">
+                        My Listings
+                      </a>
+                    </li>
+
+                  </ul>
+
+                </div>
+
+              </div>
+
+              <div class="col-xl-4 col-lg-3">
+
+                <h6 class="mb-2">
+                  Socials
+                </h6>
+
+                <ul class="nav flex-column mb-2 mb-lg-0">
+
+                  <li class="nav-item">
+                    <a href="#"
+                       class="nav-link d-inline-block px-0 pt-1 pb-2">
+                      Instagram
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a href="#"
+                       class="nav-link d-inline-block px-0 pt-1 pb-2">
+                      LinkedIn
+                    </a>
+                  </li>
+
+                </ul>
+
+              </div>
+
+              <div class="col-xl-4 col-lg-5 pt-2 pt-lg-0">
+
+                <h6 class="mb-2">
+                  Contact Us
+                </h6>
+
+                <a href="mailto:support@campusswap.com"
+                   class="fw-medium">
+                  support@campusswap.com
+                </a>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <p class="nav d-block fs-xs text-center text-md-start pb-2 pb-lg-0 mb-0">
+
+          <span class="text-light opacity-50">
+            &copy; 2026 All rights reserved. Made by
+          </span>
+
+          <a class="nav-link d-inline-block p-0"
+             href="#">
+            Campus Swap Team
+          </a>
+
+        </p>
+
+      </div>
+
+    </footer>
+
+    <a href="#top"
+       class="btn-scroll-top"
+       data-scroll>
+
+      <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">
+        Top
+      </span>
+
+      <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
+
+    </a>
+
+    <script src="/static/assets/js/cleave.js"></script>
+    <script src="/static/assets/js/theme.js"></script>
+
+    <script>
+      async function generateDescription() {
+        const title = document.getElementById("title").value.trim();
+        const category = document.getElementById("category").value;
+        const condition = document.getElementById("condition").value;
+
+        const button = document.getElementById("generateBtn");
+        const message = document.getElementById("aiMessage");
+        const description = document.getElementById("description");
+
+        if (!title) {
+          message.textContent = "Enter the item title first.";
+          return;
+        }
+
+        if (!category || !condition) {
+          message.textContent = "Choose a category and condition first.";
+          return;
+        }
+
+        button.disabled = true;
+        button.textContent = "Generating...";
+        message.textContent = "";
+
+        try {
+          const response = await fetch(
+            "{{ url_for('generate_description') }}",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                title: title,
+                category: category,
+                condition: condition
+              })
+            }
+          );
+
+          const data = await response.json();
+
+          if (data.description) {
+            description.value = data.description;
+            message.textContent = "AI description generated. You can edit it.";
+          } else {
+            message.textContent = data.error || "Could not generate description.";
+          }
+
+        } catch (error) {
+          message.textContent = "Could not connect to AI.";
+        }
+
+        button.disabled = false;
+        button.textContent = "Generate with AI";
+      }
+    </script>
+
+  </body>
+</html>
+```
