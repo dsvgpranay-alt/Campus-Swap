@@ -10,26 +10,26 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="/static/assets/js/theme-switch.js"></script>
+    <script src="{{ url_for('static', filename='assets/js/theme-switch.js') }}"></script>
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/static/assets/favicon/site.webmanifest">
-    <link rel="mask-icon" href="/static/assets/favicon/safari-pinned-tab.svg" color="#6366f1">
-    <link rel="shortcut icon" href="/static/assets/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='assets/favicon/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='assets/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='assets/favicon/favicon-16x16.png') }}">
+    <link rel="manifest" href="{{ url_for('static', filename='assets/favicon/site.webmanifest') }}">
+    <link rel="mask-icon" href="{{ url_for('static', filename='assets/favicon/safari-pinned-tab.svg') }}" color="#6366f1">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/favicon/favicon.ico') }}">
     <meta name="msapplication-TileColor" content="#080032">
-    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
+    <meta name="msapplication-config" content="{{ url_for('static', filename='assets/favicon/browserconfig.xml') }}">
     <meta name="theme-color" content="#ffffff">
 
     <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/swiper.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/page-loading.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/theme.css">
-    <script type="text/javascript" src="/static/assets/js/page-loading.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='assets/css/swiper.css') }}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='assets/css/page-loading.css') }}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='assets/css/theme.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='assets/js/page-loading.js') }}"></script>
   </head>
 
   <body>
@@ -58,7 +58,6 @@
                   <div class="dropdown-menu p-0">
                     <div class="d-lg-flex">
                       <div class="mega-dropdown-column d-flex justify-content-center align-items-center rounded-3 rounded-end-0 px-0" style="margin: -1px; background-color: #f3f6ff;">
-                        <img src="/static/assets/img/landings.jpg" alt="Categories">
                       </div>
                       <div class="mega-dropdown-column pt-lg-3 pb-lg-4" style="--si-mega-dropdown-column-width: 15rem;">
                         <ul class="list-unstyled mb-0">
@@ -156,7 +155,7 @@
         </div>
       </header>
 
-
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/universal.css') }}" />
       <section class="position-relative overflow-hidden py-4 mb-3">
         <div class="container pt-lg-3">
           <div class="row flex-lg-nowrap">
@@ -166,57 +165,93 @@
               <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg">Start Swapping Now</a>
               <div class="pt-5 mt-xl-5">
                 <h6 class="pt-xl-3 pb-3 pb-lg-4">Trusted by students across SRM Institute of Science and Technology</h6>
-                <div class="d-flex justify-content-center justify-content-lg-start mx-xl-n2">
-                  <a href="#" class="d-block me-2">
-                    <img src="/static/assets/img/brands/07.svg" width="135" alt="Logo">
-                  </a>
-                  <a href="#" class="d-block me-2">
-                    <img src="/static/assets/img/brands/04.svg" width="135" alt="Logo">
-                  </a>
-                  <a href="#" class="d-block me-2">
-                    <img src="/static/assets/img/brands/02.svg" width="135" alt="Logo">
-                  </a>
-                  <a href="#" class="d-block me-2">
-                    <img src="/static/assets/img/brands/05.svg" width="135" alt="Logo">
-                  </a>
-                </div>
               </div>
             </div>
 
-            <div class="parallax mt-4 ms-4 me-lg-0 ms-lg-n5 ms-xl-n3 mt-lg-n4">
-              <div class="parallax-layer" data-depth="0.1">
-                <img src="/static/assets/img/landing/saas-1/hero/layer01.png" width="1416" alt="Layer">
+            <div class="col-lg-6 col-xl-7 parallax mt-4 me-lg-0 ms-lg-n5 ms-xl-n3 mt-lg-n4" style="min-height: 500px;">
+              <div class="parallax-layer" style="z-index: 1000;" data-depth="0.1">
+                <div class="tilt-wrapper">
+                  <div class="cs-panel cs-base">
+                    <div class="cs-header">
+                      <div class="cs-dot"></div><div class="cs-dot"></div><div class="cs-dot"></div>
+                    </div>
+                    <div style="display: flex; flex: 1;">
+                      <div class="cs-sidebar">
+                        <div class="cs-nav active"></div>
+                        <div class="cs-nav"></div>
+                        <div class="cs-nav"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="parallax-layer zindex-2" data-depth="0.15">
-                <img src="/static/assets/img/landing/saas-1/hero/layer02.png" alt="Layer">
+
+              <div class="parallax-layer" style="z-index: 2000;" data-depth="0.18">
+                <div class="tilt-wrapper">
+                  <div class="cs-panel cs-card pos-card-1">
+                    <div class="cs-card-img">📚</div>
+                    <div class="cs-card-body">
+                      <div class="cs-title">Engineering Maths</div>
+                      <div class="cs-price">For Sale: $15</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="parallax-layer zindex-2" data-depth="0.35">
-                <img src="/static/assets/img/landing/saas-1/hero/layer03.png" alt="Layer">
+
+              <div class="parallax-layer" style="z-index: 3000;" data-depth="0.25">
+                <div class="tilt-wrapper">
+                  <div class="cs-panel cs-card pos-card-2">
+                    <div class="cs-card-img">🚲</div>
+                    <div class="cs-card-body">
+                      <div class="cs-title">City Cruiser Bike</div>
+                      <div class="cs-price">$60 or Swap</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="parallax-layer zindex-2" data-depth="0.25">
-                <img src="/static/assets/img/landing/saas-1/hero/layer04.png" alt="Layer">
+
+              <div class="parallax-layer" style="z-index: 4000;" data-depth="0.32">
+                <div class="tilt-wrapper">
+                  <div class="cs-panel cs-card pos-card-3">
+                    <div class="cs-card-img">💡</div>
+                    <div class="cs-card-body">
+                      <div class="cs-title">Study Table Lamp</div>
+                      <div class="cs-price">Swap Only</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="parallax-layer zindex-2" data-depth="0.4">
-                <img src="/static/assets/img/landing/saas-1/hero/layer05.png" alt="Layer">
+
+              <div class="parallax-layer" style="z-index: 5000;" data-depth="0.4">
+                <div class="tilt-wrapper">
+                  <div class="cs-panel cs-badge">
+                    <div class="cs-badge-icon">✓</div>
+                    <div>
+                      <div class="cs-title" style="margin:0;">Swap Request Accepted</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="parallax-layer zindex-2" data-depth="0.28">
-                <img src="/static/assets/img/landing/saas-1/hero/layer06.png" alt="Layer">
-              </div>
-              <div class="parallax-layer zindex-2" data-depth="0.35">
-                <img src="/static/assets/img/landing/saas-1/hero/layer07.png" alt="Layer">
+
+              <div class="parallax-layer" style="z-index: 6000;" data-depth="0.48">
+                <div class="tilt-wrapper">
+                  <div class="cs-panel cs-profile">
+                    <div class="cs-avatar">T</div>
+                    <div class="cs-title" style="margin:0;">Tanmay (Verified)</div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-
       <section class="container">
         <h2 class="h1 text-center pb-4 pb-lg-5">Simple, Accessible &amp; Cost-Effective</h2>
         <div class="row">
           <div class="col-lg-3 col-md-4 col-sm-6 text-center pb-md-2 mb-3 mb-lg-4">
             <div class="d-inline-block bg-secondary rounded-circle p-3 mb-4">
-              <i class="bx bx-money fs-1 text-primary"></i>
+              <i class="bx bx-currency-note fs-1 text-primary"></i>
             </div>
             <h3 class="h5 pb-1 mb-2">Save Money</h3>
             <p class="fs-sm">Provide affordable second-hand products to help students save on campus essentials.</p>
@@ -251,7 +286,7 @@
           </div>
           <div class="col-lg-3 col-md-4 col-sm-6 text-center pb-md-2 mb-3 mb-lg-4">
             <div class="d-inline-block bg-secondary rounded-circle p-3 mb-4">
-              <i class="bx bx-chat fs-1 text-primary"></i>
+              <i class="bx bx-discussion fs-1 text-primary"></i>
             </div>
             <h3 class="h5 pb-1 mb-2">Direct Chat</h3>
             <p class="fs-sm">Communicate directly with buyers and sellers to negotiate and arrange meetups.</p>
@@ -274,118 +309,81 @@
       </section>
 
 
-      <section class="container pt-3 pt-md-4 pt-lg-5 pb-2 mt-lg-2 mt-xl-4">
-        <div class="row align-items-center">
-          <div class="rellax col-md-7" data-rellax-percentage="0.5" data-rellax-speed="-0.6" data-disable-parallax-down="lg">
-            <img src="/static/assets/img/landing/saas-1/dashboard.png" class="d-block mx-auto" width="746" alt="Image">
-          </div>
-          <div class="rellax col-md-5 col-xl-4 offset-xl-1 d-flex d-sm-block flex-column" data-rellax-percentage="0.5" data-rellax-speed="0.8" data-disable-parallax-down="lg">
-            <h2 class="pb-3 pt-2 pt-md-0">How Campus Swap Works</h2>
-            <ul class="list-unstyled pb-2">
-              <li class="d-flex align-items-center pb-1 mb-2">
-                <i class="bx bx-check-circle text-primary fs-xl me-2"></i>
-                Create a simple and trusted student profile
-              </li>
-              <li class="d-flex align-items-center pb-1 mb-2">
-                <i class="bx bx-check-circle text-primary fs-xl me-2"></i>
-                List your unused books and belongings
-              </li>
-              <li class="d-flex align-items-center pb-1 mb-2">
-                <i class="bx bx-check-circle text-primary fs-xl me-2"></i>
-                Search for affordable second-hand products
-              </li>
-              <li class="d-flex align-items-center pb-1 mb-2">
-                <i class="bx bx-check-circle text-primary fs-xl me-2"></i>
-                Connect with interested students via chat
-              </li>
-              <li class="d-flex align-items-center pb-1 mb-2">
-                <i class="bx bx-check-circle text-primary fs-xl me-2"></i>
-                Meet on campus for safe and secure exchange
-              </li>
-            </ul>
-            <a href="{{ url_for('register') }}" class="btn btn-primary">
-              Create your account
-              <i class="bx bx-right-arrow-alt fs-xl ms-2"></i>
-            </a>
-          </div>
-        </div>
-      </section>
-
-
       <section class="container pt-5 pb-2 mt-3 mt-sm-4 mt-xl-5">
         <h2 class="h1 text-center pb-3 pb-lg-4">One Platform — All Your Campus Needs</h2>
+        
         <ul class="nav nav-tabs flex-nowrap justify-content-lg-center overflow-auto pb-2 mb-3 mb-lg-4" role="tablist">
           <li class="nav-item" role="presentation">
-            <button class="nav-link text-nowrap active" id="project-management-tab" data-bs-toggle="tab" data-bs-target="#project-management" type="button" role="tab" aria-controls="project-management" aria-selected="true">
+            <button class="nav-link text-nowrap active" id="textbooks-tab" data-bs-toggle="tab" data-bs-target="#textbooks" type="button" role="tab" aria-controls="textbooks" aria-selected="true">
               <i class="bx bx-book fs-lg opacity-60 me-2"></i>
               Textbooks &amp; Notes
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link text-nowrap" id="remote-work-tab" data-bs-toggle="tab" data-bs-target="#remote-work" type="button" role="tab" aria-controls="remote-work" aria-selected="false">
+            <button class="nav-link text-nowrap" id="electronics-tab" data-bs-toggle="tab" data-bs-target="#electronics" type="button" role="tab" aria-controls="electronics" aria-selected="false">
               <i class="bx bx-laptop fs-lg opacity-60 me-2"></i>
               Electronics &amp; Gadgets
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link text-nowrap" id="product-release-tab" data-bs-toggle="tab" data-bs-target="#product-release" type="button" role="tab" aria-controls="product-release" aria-selected="false">
+            <button class="nav-link text-nowrap" id="dorm-tab" data-bs-toggle="tab" data-bs-target="#dorm" type="button" role="tab" aria-controls="dorm" aria-selected="false">
               <i class="bx bx-bed fs-lg opacity-60 me-2"></i>
               Dorm Essentials
             </button>
           </li>
           <li class="nav-item" role="presentation">
-            <button class="nav-link text-nowrap" id="campaign-planning-tab" data-bs-toggle="tab" data-bs-target="#campaign-planning" type="button" role="tab" aria-controls="campaign-planning" aria-selected="false">
+            <button class="nav-link text-nowrap" id="commute-tab" data-bs-toggle="tab" data-bs-target="#commute" type="button" role="tab" aria-controls="commute" aria-selected="false">
               <i class="bx bx-cycling fs-lg opacity-60 me-2"></i>
               Bicycles &amp; Commute
             </button>
           </li>
         </ul>
 
-        <div class="tab-content bg-secondary rounded-3 py-4">
-          <div class="tab-pane fade show active" id="project-management" role="tabpanel" aria-labelledby="project-management-tab">
-            <div class="row align-items-center pt-3 pt-sm-4 pt-md-0 px-3 px-sm-4 px-lg-0">
+        <div class="tab-content bg-secondary rounded-3 w-auto">
+          <div class="tab-pane fade show active" id="textbooks" role="tabpanel" aria-labelledby="textbooks-tab">
+            <div class="row align-items-center pt-3 pb-2 pb-sm-3 pt-sm-4 pt-md-0 px-3 px-sm-4 px-lg-0">
               <div class="col-lg-4 col-md-5 offset-lg-1 text-center text-md-start">
                 <h3 class="mb-lg-4">Textbooks &amp; Notes</h3>
                 <p>Exchange previous semester books and study materials easily. Don't let your expensive engineering textbooks gather dust on the shelf when another student desperately needs them for their upcoming courses.</p>
               </div>
-              <div class="col-lg-6 col-md-7 mt-md-4">
-                <img src="/static/assets/img/landing/saas-1/use-cases/01.png" class="d-block my-lg-2 mx-auto me-md-0" width="595" alt="Image">
+              <div class="col-lg-6 col-md-7 mt-4 mt-md-0 py-4">
+                <img src="{{ url_for('static', filename='assets/img/textbooks.jpg') }}" class="d-block mx-auto ms-md-auto me-md-0 img-fluid rounded-3" alt="Textbooks and Notes">
               </div>
             </div>
           </div>
 
-          <div class="tab-pane fade" id="remote-work" role="tabpanel" aria-labelledby="remote-work-tab">
+          <div class="tab-pane fade" id="electronics" role="tabpanel" aria-labelledby="electronics-tab">
             <div class="row align-items-center pt-3 pb-2 pb-sm-3 pt-sm-4 pt-md-0 px-3 px-sm-4 px-lg-0">
               <div class="col-lg-4 col-md-5 offset-lg-1 text-center text-md-start">
                 <h3 class="mb-lg-4">Electronics &amp; Gadgets</h3>
                 <p>Find affordable calculators, laptops, chargers, and accessories. Upgrade your tech gear without breaking the bank by purchasing gently used devices directly from your seniors or peers on campus.</p>
               </div>
-              <div class="col-lg-6 col-md-7 mt-md-4">
-                <img src="/static/assets/img/landing/saas-1/use-cases/02.png" class="d-block my-lg-2 mx-auto me-md-0" width="502" alt="Image">
+              <div class="col-lg-6 col-md-7 mt-4 mt-md-0 py-4">
+                <img src="{{ url_for('static', filename='assets/img/gadgets.jpg') }}" class="d-block mx-auto ms-md-auto me-md-0 img-fluid rounded-3" alt="Electronics and Gadgets">
               </div>
             </div>
           </div>
 
-          <div class="tab-pane fade" id="product-release" role="tabpanel" aria-labelledby="product-release-tab">
-            <div class="row align-items-center pt-3 pt-sm-4 pt-md-0 px-3 pe-sm-4 pe-md-0 ps-sm-4 ps-lg-0">
+          <div class="tab-pane fade" id="dorm" role="tabpanel" aria-labelledby="dorm-tab">
+            <div class="row align-items-center pt-3 pb-2 pb-sm-3 pt-sm-4 pt-md-0 px-3 px-sm-4 px-lg-0">
               <div class="col-lg-4 col-md-5 offset-lg-1 text-center text-md-start">
                 <h3 class="mb-lg-4">Dorm Essentials</h3>
-                <p>Buy or sell furniture, lamps, organizers, and room decorations. Hostels and PGs require a lot of setup, make it easier by exchanging items with students who are moving out or graduating.</p>
+                <p>Buy or sell furniture, lamps, organizers, and room decorations. Hostels and PGs require a lot of setup—make it easier by exchanging items with students who are moving out or graduating.</p>
               </div>
-              <div class="col-lg-6 col-md-7 mt-n3 mt-md-1">
-                <img src="/static/assets/img/landing/saas-1/use-cases/03.png" class="d-block mb-lg-2 mx-auto me-md-0" width="525" alt="Image">
+              <div class="col-lg-6 col-md-7 mt-4 mt-md-0 py-4">
+                <img src="{{ url_for('static', filename='assets/img/dorm.jpg') }}" class="d-block mx-auto ms-md-auto me-md-0 img-fluid rounded-3" alt="Dorm Essentials">
               </div>
             </div>
           </div>
 
-          <div class="tab-pane fade" id="campaign-planning" role="tabpanel" aria-labelledby="campaign-planning-tab">
-            <div class="row align-items-center pt-3 pt-sm-4 pt-md-0 px-3 pe-sm-4 pe-md-0 ps-sm-4 ps-lg-0">
+          <div class="tab-pane fade" id="commute" role="tabpanel" aria-labelledby="commute-tab">
+            <div class="row align-items-center pt-3 pb-2 pb-sm-3 pt-sm-4 pt-md-0 px-3 px-sm-4 px-lg-0">
               <div class="col-lg-4 col-md-5 offset-lg-1 text-center text-md-start">
                 <h3 class="mb-lg-4">Bicycles &amp; Commute</h3>
-                <p>Get around the campus easily by swapping or buying bicycles. A campus as large as SRMIST requires reliable transport. Find students selling their bikes as they graduate, ensuring a seamless transfer.</p>
+                <p>Get around the campus easily by swapping or buying bicycles. A campus as large as SRM requires reliable transport. Find students selling their bikes as they graduate, ensuring a seamless transfer.</p>
               </div>
-              <div class="col-lg-6 col-md-7 mt-n3 mt-md-1">
-                <img src="/static/assets/img/landing/saas-1/use-cases/04.png" class="d-block mb-lg-2 mx-auto me-md-0" width="545" alt="Image">
+              <div class="col-lg-6 col-md-7 mt-4 mt-md-0 py-4">
+                <img src="{{ url_for('static', filename='assets/img/commute.jpg') }}" class="d-block mx-auto ms-md-auto me-md-0 img-fluid rounded-3" alt="Bicycles and Commute">
               </div>
             </div>
           </div>
@@ -407,8 +405,8 @@
                 <div class="card h-100 border-0 shadow-sm p-xxl-3" style="min-width: 18rem;">
                   <div class="card-body">
                     <div class="d-flex align-items-center pb-2 pb-md-3 mb-4">
-                      <div class="flex-shrink-0 bg-secondary rounded-3">
-                        <img src="/static/assets/img/landing/saas-1/pricing/basic.png" width="84" alt="Icon">
+                      <div class="flex-shrink-0 rounded-3">
+                        <i class="bx bx-sparkles-alt fs-1 text-primary"></i>
                       </div>
                       <div class="ps-4">
                         <h3 class="fs-lg fw-normal text-body mb-2">Basic</h3>
@@ -451,8 +449,8 @@
                 <div class="card h-100 border-0 bg-primary shadow-primary shadow-dark-mode-none p-xxl-3" style="min-width: 18rem;">
                   <div class="card-body">
                     <div class="d-flex align-items-center pb-2 pb-md-3 mb-4">
-                      <div class="flex-shrink-0 rounded-3" style="background-color: rgba(255,255,255, .1);">
-                        <img src="/static/assets/img/landing/saas-1/pricing/standard.png" width="84" alt="Icon">
+                      <div class="flex-shrink-0 rounded-3">
+                        <i class="bx bx-check-shield fs-1 text-white"></i>
                       </div>
                       <div class="ps-4">
                         <h3 class="fs-lg fw-normal text-light opacity-70 mb-2">Verified Student</h3>
@@ -495,8 +493,8 @@
                 <div class="card h-100 border-0 shadow-sm p-xxl-3" style="min-width: 18rem;">
                   <div class="card-body">
                     <div class="d-flex align-items-center pb-2 pb-md-3 mb-4">
-                      <div class="flex-shrink-0 bg-secondary rounded-3">
-                        <img src="/static/assets/img/landing/saas-1/pricing/ultimate.png" width="84" alt="Icon">
+                      <div class="flex-shrink-0 rounded-3">
+                        <i class="bx bx-bolt-circle fs-1 text-primary"></i>
                       </div>
                       <div class="ps-4">
                         <h3 class="fs-lg fw-normal text-body mb-2">Pro Seller</h3>
@@ -548,7 +546,7 @@
               <div class="card border-0 bg-dark h-100 p-xl-4">
                 <div class="card-body">
                   <h2 class="display-1 text-light">15k+</h2>
-                  <p class="lead fw-medium text-light"><span class="opacity-70">students are taking advantage of our</span> <span class="fw-bold">Campus Swap Platform</span><span class="opacity-70">. It’s a transparent and efficient way to exchange belongings.</span></p>
+                  <p class="lead fw-medium text-light"><span class="opacity-70">Students are taking advantage of our</span> <span class="fw-bold">Campus Swap Platform</span><span class="opacity-70">. It’s a transparent and efficient way to exchange belongings.</span></p>
                 </div>
               </div>
             </div>
@@ -556,7 +554,7 @@
               <div class="card border-0 shadow-sm p-4 p-xxl-5">
                 <div class="d-flex justify-content-between pb-4 mb-2">
                   <span class="btn btn-icon btn-primary btn-lg shadow-primary pe-none">
-                    <i class="bx bxs-quote-left"></i>
+                    <i class="bx bx-quote-left"></i>
                   </span>
                   <div class="d-flex">
                     <button type="button" id="testimonials-prev" class="btn btn-prev btn-icon btn-sm me-2" aria-label="Previous">
@@ -588,7 +586,7 @@
                           <p class="fs-lg mb-0">Campus Swap helped me find all my 2nd-year engineering books for half the price. The chat feature made meeting up on campus so simple. Highly recommended!</p>
                         </blockquote>
                         <figcaption class="card-footer border-0 d-flex align-items-center w-100 pb-2">
-                          <img src="/static/assets/img/avatar/14.jpg" width="60" class="rounded-circle" alt="Annette Black">
+                          <img src="{{ url_for('static', filename='assets/img/avatar.png') }}" width="60" class="rounded-circle" alt="AB">
                           <div class="ps-3">
                             <h6 class="fw-semibold lh-base mb-0">Annette Black</h6>
                             <span class="fs-sm text-muted">2nd Year B.Tech CSE Student</span>
@@ -603,7 +601,7 @@
                           <p class="fs-lg mb-0">I easily sold my old bicycle before moving out of the hostel. Connecting directly with juniors instead of relying on external apps felt much safer and more reliable.</p>
                         </blockquote>
                         <figcaption class="card-footer border-0 d-flex align-items-center w-100 pb-2">
-                          <img src="/static/assets/img/avatar/13.jpg" width="60" class="rounded-circle" alt="Ralph Edwards">
+                          <img src="{{ url_for('static', filename='assets/img/avatar.png') }}" width="60" class="rounded-circle" alt="Ralph Edwards">
                           <div class="ps-3">
                             <h6 class="fw-semibold lh-base mb-0">Ralph Edwards</h6>
                             <span class="fs-sm text-muted">Final Year ECE Student</span>
@@ -618,7 +616,7 @@
                           <p class="fs-lg mb-0">Great initiative for sustainability. I donated my old engineering drafter and actually got a study lamp in exchange. This is exactly what our campus needed.</p>
                         </blockquote>
                         <figcaption class="card-footer border-0 d-flex align-items-center w-100 pb-2">
-                          <img src="/static/assets/img/avatar/11.jpg" width="60" class="rounded-circle" alt="Darrell Steward">
+                          <img src="{{ url_for('static', filename='assets/img/avatar.png') }}" width="60" class="rounded-circle" alt="Darrell Steward">
                           <div class="ps-3">
                             <h6 class="fw-semibold lh-base mb-0">Darrell Steward</h6>
                             <span class="fs-sm text-muted">3rd Year Mechanical Student</span>
@@ -675,7 +673,7 @@
           <div class="swiper-wrapper">
 
             <div class="swiper-slide py-3">
-              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2">
+              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2 text-decoration-none">
                 <div class="card-body text-center">
                   <i class="bx bx-book fs-1 text-primary mb-2"></i>
                   <h6 class="mb-0 fs-sm">Textbooks</h6>
@@ -684,7 +682,7 @@
             </div>
 
             <div class="swiper-slide py-3">
-              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2">
+              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2 text-decoration-none">
                 <div class="card-body text-center">
                   <i class="bx bx-laptop fs-1 text-primary mb-2"></i>
                   <h6 class="mb-0 fs-sm">Electronics</h6>
@@ -693,7 +691,7 @@
             </div>
 
             <div class="swiper-slide py-3">
-              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2">
+              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2 text-decoration-none">
                 <div class="card-body text-center">
                   <i class="bx bx-pencil fs-1 text-primary mb-2"></i>
                   <h6 class="mb-0 fs-sm">Stationery</h6>
@@ -702,7 +700,7 @@
             </div>
 
             <div class="swiper-slide py-3">
-              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2">
+              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2 text-decoration-none">
                 <div class="card-body text-center">
                   <i class="bx bx-cycling fs-1 text-primary mb-2"></i>
                   <h6 class="mb-0 fs-sm">Bicycles</h6>
@@ -711,7 +709,7 @@
             </div>
 
             <div class="swiper-slide py-3">
-              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2">
+              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2 text-decoration-none">
                 <div class="card-body text-center">
                   <i class="bx bx-chair fs-1 text-primary mb-2"></i>
                   <h6 class="mb-0 fs-sm">Furniture</h6>
@@ -720,7 +718,7 @@
             </div>
 
             <div class="swiper-slide py-3">
-              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2">
+              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2 text-decoration-none">
                 <div class="card-body text-center">
                   <i class="bx bx-bed fs-1 text-primary mb-2"></i>
                   <h6 class="mb-0 fs-sm">Dorm Gear</h6>
@@ -729,16 +727,16 @@
             </div>
 
             <div class="swiper-slide py-3">
-              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2">
+              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2 text-decoration-none">
                 <div class="card-body text-center">
-                  <i class="bx bx-bulb fs-1 text-primary mb-2"></i>
+                  <i class="bx bx-light-bulb-alt fs-1 text-primary mb-2"></i>
                   <h6 class="mb-0 fs-sm">Accessories</h6>
                 </div>
               </a>
             </div>
 
             <div class="swiper-slide py-3">
-              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2">
+              <a href="#" class="card card-hover border-0 shadow-sm py-3 mx-2 text-decoration-none">
                 <div class="card-body text-center">
                   <i class="bx bx-basketball fs-1 text-primary mb-2"></i>
                   <h6 class="mb-0 fs-sm">Sports Gear</h6>
@@ -839,7 +837,7 @@
               </div>
               <div class="col-xl-4 col-lg-5 pt-2 pt-lg-0">
                 <h6 class="mb-2">Contact Us</h6>
-                <a href="mailto:support@campusswap.com" class="fw-medium">support@campusswap.com</a>
+                <a href="mailto:support@campusswap.com" class="fw-medium text-decoration-none">support@campusswap.com</a>
               </div>
             </div>
           </div>
@@ -857,11 +855,11 @@
     </a>
 
 
-    <script src="/static/assets/js/parallax.js"></script>
-    <script src="/static/assets/js/jarallax.js"></script>
-    <script src="/static/assets/js/rellax.js"></script>
-    <script src="/static/assets/js/swiper.js"></script>
+    <script src="{{ url_for('static', filename='assets/js/parallax.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/jarallax.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/rellax.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/swiper.js') }}"></script>
 
-    <script src="/static/assets/js/theme.js"></script>
+    <script src="{{ url_for('static', filename='assets/js/theme.js') }}"></script>
   </body>
 </html>

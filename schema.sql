@@ -1,5 +1,3 @@
-
-
 CREATE DATABASE IF NOT EXISTS campus_swap;
 USE campus_swap;
 

@@ -139,7 +139,7 @@ def item_detail(item_id):
     is_owner = session.get("user_id") == item["seller_id"]
 
     return render_template(
-        "item_detail.html",
+        "items/item_detail.html",
         item=item,
         is_owner=is_owner
     )
@@ -209,7 +209,7 @@ def register():
 
         return redirect(url_for("profile"))
 
-    return render_template("register.html")
+    return render_template("auth/register.html")
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -251,7 +251,7 @@ def login():
             next_url or url_for("index")
         )
 
-    return render_template("login.html")
+    return render_template("auth/login.html")
 
 
 @app.route("/logout")
@@ -268,7 +268,7 @@ def profile():
     count = listing_count_for(user["id"])
 
     return render_template(
-        "profile.html",
+        "profile/profile.html",
         user=user,
         listing_count=count
     )
@@ -402,7 +402,7 @@ def my_listings():
     conn.close()
 
     return render_template(
-        "my_listings.html",
+        "items/my_listings.html",
         items=items
     )
 @app.route("/add-item", methods=["GET", "POST"])
@@ -462,7 +462,7 @@ def add_item():
         )
 
     return render_template(
-        "add_item.html",
+        "items/add_item.html",
         categories=CATEGORIES,
         conditions=CONDITIONS
     )
@@ -587,7 +587,7 @@ def edit_item(item_id):
     conn.close()
 
     return render_template(
-        "edit_item.html",
+        "items/edit_item.html",
         item=item,
         categories=CATEGORIES,
         conditions=CONDITIONS
