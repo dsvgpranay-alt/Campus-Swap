@@ -4,18 +4,21 @@ import mysql.connector
 from google import genai
 from flask import Flask, render_template, request, redirect, url_for, session, flash, abort
 from werkzeug.security import generate_password_hash, check_password_hash
+from dotenv import load_dotenv
+
+load_dotenv("credentials.env")
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "campus-swap-dev-secret-key")
+app.secret_key = os.getenv("SECRET_KEY", "campus-swap-dev-secret-key")
 
 DB_CONFIG = {
-    "host": os.environ.get("DB_HOST", "localhost"),
-    "user": os.environ.get("DB_USER", "root"),
-    "password": os.environ.get("DB_PASSWORD"),
+    "host": os.getenv("DB_HOST", "localhost"),
+    "user": os.getenv("DB_USER", "root"),
+    "password": os.getenv("DB_PASSWORD"),
     "database": "campus_swap"
 }
 
-client = genai.Client(api_key=os.environ.get("GEMINI_API_KEY"))
+client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 CATEGORIES = ["Books", "Electronics", "Stationery", "Lab Equipment","Furniture", "Clothing", "Sports", "Accessories", "Other"]
 
@@ -638,6 +641,39 @@ def delete_item(item_id):
     flash("Listing deleted.", "success")
 
     return redirect(url_for("my_listings"))
+
+@app.route("/docs/about/")
+def about():
+    return render_template("docs/about.html")
+
+@app.route("/docs/blogs")
+def blogs():
+  return render_template("docs/blogs.html")
+
+@app.route("/docs/mission")
+def mission():
+    return render_template("docs/mission.html")
+
+@app.route("/support/contact")
+def contact():
+    return render_template("support/contact.html")
+
+@app.route("/docs/faqs")
+def faqs():
+    return render_template("support/faqs.html")
+
+@app.route("/support/help_center")
+def help_center():
+    return render_template("support/help_center.html")
+
+@app.route("/support/report")
+def report():
+  return return_template("support/report.html")
+
+@app.route("/support/safety_guidelines")
+def safety_guidelines():
+    return render_template("support/safety_guidelines.html")
+  
 
 if __name__ == "__main__":
     app.run(debug=True)

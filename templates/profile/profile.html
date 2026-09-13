@@ -10,26 +10,16 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script src="/static/assets/js/theme-switch.js"></script>
-
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="/static/assets/favicon/site.webmanifest">
-    <link rel="mask-icon" href="/static/assets/favicon/safari-pinned-tab.svg" color="#6366f1">
-    <link rel="shortcut icon" href="/static/assets/favicon/favicon.ico">
-    <meta name="msapplication-TileColor" content="#080032">
-    <meta name="msapplication-config" content="assets/favicon/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
+    <script src="{{ url_for('static', filename='assets/js/theme-switch.js') }}"></script>
 
     <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/swiper.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/page-loading.css" />
-    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/theme.css">
-    <script type="text/javascript" src="/static/assets/js/page-loading.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='assets/css/swiper.css') }}">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='assets/css/page-loading.css') }}" />
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='assets/css/theme.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='assets/js/page-loading.js') }}"></script>
   </head>
 
   <body>
@@ -58,34 +48,29 @@
                   <div class="dropdown-menu p-0">
                     <div class="d-lg-flex">
                       <div class="mega-dropdown-column d-flex justify-content-center align-items-center rounded-3 rounded-end-0 px-0" style="margin: -1px; background-color: #f3f6ff;">
-                        <img src="/static/assets/img/landings.jpg" alt="Categories">
                       </div>
                       <div class="mega-dropdown-column pt-lg-3 pb-lg-4" style="--si-mega-dropdown-column-width: 15rem;">
                         <ul class="list-unstyled mb-0">
                           <li><a href="{{ url_for('marketplace') }}" class="dropdown-item">All Items</a></li>
-                          <li><a href="landing-mobile-app-showcase-v1.html" class="dropdown-item">Books & Study Materials</a></li>
-                          <li><a href="landing-mobile-app-showcase-v2.html" class="dropdown-item">Electronics & Gadgets</a></li>
-                          <li><a href="landing-mobile-app-showcase-v3.html" class="dropdown-item">Stationery<span class="badge bg-success ms-2">New</span></a></li>
-                          <li><a href="landing-product.html" class="dropdown-item d-flex align-items-center">Bicycles & Commute</a></li>
-                          <li><a href="landing-saas-v1.html" class="dropdown-item">Furniture</a></li>
-                          <li><a href="landing-saas-v2.html" class="dropdown-item">Dorm Essentials</a></li>
-                          <li><a href="landing-saas-v3.html" class="dropdown-item">Lab Equipments</a></li>
-                          <li><a href="landing-saas-v4.html" class="dropdown-item">Sports Gear</a></li>
-                          <li><a href="landing-saas-v5.html" class="dropdown-item">Miscellaneous<span class="badge bg-success ms-2">New</span></a></li>
-                        </ul>
-                      </div>
-                      <div class="mega-dropdown-column pt-lg-3 pb-lg-4">
-                        <ul class="list-unstyled mb-0">
-                          <li><a href="landing-startup.html" class="dropdown-item d-flex align-items-center">Latest Listings</a></li>
-                          <li><a href="landing-financial.html" class="dropdown-item">Most Popular</a></li>
-                          <li><a href="landing-online-courses.html" class="dropdown-item">Free Items</a></li>
-                          <li><a href="landing-medical.html" class="dropdown-item">Swap Only</a></li>
-                          <li><a href="landing-software-dev-agency-v1.html" class="dropdown-item">Freshman Needs</a></li>
-                          <li><a href="landing-software-dev-agency-v2.html" class="dropdown-item">Senior Clearouts</a></li>
-                          <li><a href="landing-software-dev-agency-v3.html" class="dropdown-item">Hostel Essentials</a></li>
-                          <li><a href="landing-conference.html" class="dropdown-item">Day Scholar Needs</a></li>
-                          <li><a href="landing-digital-agency.html" class="dropdown-item">Textbooks</a></li>
-                          <li><a href="landing-blog.html" class="dropdown-item">Calculators</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Books') }}" class="dropdown-item">Books & Study Materials</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Electronics') }}" class="dropdown-item">Electronics & Gadgets</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Stationery') }}" class="dropdown-item">Stationery</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Bicycles') }}" class="dropdown-item">Bicycles & Commute</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Furniture') }}" class="dropdown-item">Furniture</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Dorm-Essentials') }}" class="dropdown-item">Dorm Essentials</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Lab-Equipment') }}" class="dropdown-item">Lab Equipments</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Sports') }}" class="dropdown-item">Sports Gear</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Miscellaneous') }}" class="dropdown-item">Miscellaneous</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Latest-Listings') }}" class="dropdown-item">Latest Listings</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Most-Popular') }}" class="dropdown-item">Most Popular</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Free-Items') }}" class="dropdown-item">Free Items</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Swap-Only') }}" class="dropdown-item">Swap Only</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Freshman-Needs') }}" class="dropdown-item">Freshman Needs</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Senior-Clearouts') }}" class="dropdown-item">Senior Clearouts</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Hostel-Essentials') }}" class="dropdown-item">Hostel Essentials</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Day-Scholar-Needs') }}" class="dropdown-item">Day Scholar Needs</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Textbooks') }}" class="dropdown-item">Textbooks</a></li>
+                          <li><a href="{{ url_for('marketplace', category='Calculators') }}" class="dropdown-item">Calculators</a></li>
                         </ul>
                       </div>
                     </div>
@@ -96,56 +81,12 @@
                   <div class="dropdown-menu">
                     <div class="d-lg-flex pt-lg-3">
                       <div class="mega-dropdown-column">
-                        <h6 class="px-3 mb-2">About Us</h6>
                         <ul class="list-unstyled mb-3">
-                          <li><a href="about-v1.html" class="dropdown-item py-1">Our Mission</a></li>
-                          <li><a href="about-v2.html" class="dropdown-item py-1">Safety Guidelines</a></li>
-                          <li><a href="about-v3.html" class="dropdown-item py-1">How It Works</a></li>
-                        </ul>
-                        <h6 class="px-3 mb-2">Blog</h6>
-                        <ul class="list-unstyled mb-3">
-                          <li><a href="blog-list-with-sidebar.html" class="dropdown-item py-1">Student Stories</a></li>
-                          <li><a href="blog-grid-with-sidebar.html" class="dropdown-item py-1">Thrifting Tips</a></li>
-                          <li><a href="blog-list-no-sidebar.html" class="dropdown-item py-1">Campus Events</a></li>
-                          <li><a href="blog-grid-no-sidebar.html" class="dropdown-item py-1">Exchange Drives</a></li>
-                          <li><a href="blog-simple-feed.html" class="dropdown-item py-1">Community Feed</a></li>
-                          <li><a href="blog-single.html" class="dropdown-item py-1">Latest Announcement</a></li>
-                          <li><a href="blog-podcast.html" class="dropdown-item py-1">Student Interviews</a></li>
-                        </ul>
-                      </div>
-                      <div class="mega-dropdown-column">
-                        <h6 class="px-3 mb-2">Featured</h6>
-                        <ul class="list-unstyled mb-3">
-                          <li><a href="portfolio-grid.html" class="dropdown-item py-1">Featured Swaps</a></li>
-                          <li><a href="portfolio-list.html" class="dropdown-item py-1">Recent Trades</a></li>
-                          <li><a href="portfolio-slider.html" class="dropdown-item py-1">Top Sellers</a></li>
-                          <li><a href="portfolio-courses.html" class="dropdown-item py-1">Success Stories</a></li>
-                          <li><a href="portfolio-single-project.html" class="dropdown-item py-1">Item Highlight</a></li>
-                          <li><a href="portfolio-single-course.html" class="dropdown-item py-1">User Spotlight</a></li>
-                        </ul>
-                        <h6 class="px-3 mb-2">Support</h6>
-                        <ul class="list-unstyled mb-3">
-                          <li><a href="services-v1.html" class="dropdown-item py-1">Help Center</a></li>
-                          <li><a href="services-v2.html" class="dropdown-item py-1">Report an Issue</a></li>
-                          <li><a href="services-single-v1.html" class="dropdown-item py-1">Contact Support</a></li>
-                          <li><a href="services-single-v2.html" class="dropdown-item py-1">Feedback</a></li>
-                        </ul>
-                      </div>
-                      <div class="mega-dropdown-column">
-                        <h6 class="px-3 mb-2">Pricing</h6>
-                        <ul class="list-unstyled mb-3">
-                          <li><a href="pricing.html" class="dropdown-item py-1">Membership Plans</a></li>
-                        </ul>
-                        <h6 class="px-3 mb-2">Contacts</h6>
-                        <ul class="list-unstyled mb-3">
-                          <li><a href="contacts-v1.html" class="dropdown-item py-1">Contact Us</a></li>
-                          <li><a href="contacts-v2.html" class="dropdown-item py-1">Location Info</a></li>
-                          <li><a href="contacts-v3.html" class="dropdown-item py-1">Directory</a></li>
-                        </ul>
-                        <h6 class="px-3 mb-2">Legal</h6>
-                        <ul class="list-unstyled">
-                          <li><a href="404-v1.html" class="dropdown-item py-1">Page Not Found</a></li>
-                          <li><a href="404-v2.html" class="dropdown-item py-1">Missing Item</a></li>
+                          <li><a href="{{ url_for('about') }}" class="dropdown-item py-1">About Us</a></li>
+                          <li><a href="{{ url_for('blogs') }}" class="dropdown-item py-1">Blogs</a></li>
+                          <li><a href="{{ url_for('mission') }}" class="dropdown-item py-1">Our Mission</a></li>
+                          <li><a href="{{ url_for('contact') }}" class="dropdown-item py-1">Contact Support</a></li>
+                          <li><a href="{{ url_for('faqs') }}" class="dropdown-item py-1">FAQs</a></li>
                         </ul>
                       </div>
                     </div>
@@ -163,12 +104,6 @@
                     <li><a href="{{ url_for('register') }}" class="dropdown-item">Sign Up</a></li>
                     {% endif %}
                   </ul>
-                </li>
-                <li class="nav-item">
-                  <a href="components/typography.html" class="nav-link">Guides</a>
-                </li>
-                <li class="nav-item">
-                  <a href="docs/getting-started.html" class="nav-link">FAQ</a>
                 </li>
               </ul>
             </div>
@@ -194,16 +129,15 @@
         </div>
       </header>
 
-
       <section class="container pt-5">
         <div class="row">
           <aside class="col-lg-3 col-md-4 border-end pb-5 mt-n5">
             <div class="position-sticky top-0">
               <div class="text-center pt-5">
                 <div class="d-table position-relative mx-auto mt-2 mt-lg-4 pt-5 mb-3">
-                  <img src="/static/assets/img/avatar/18.jpg" class="d-block rounded-circle" width="120" alt="Student Profile">
+                  <img src="../../static/assets/img/avatar.png" class="d-block rounded-circle" width="120" alt="Student Profile">
                   <button type="button" class="btn btn-icon btn-light bg-white btn-sm border rounded-circle shadow-sm position-absolute bottom-0 end-0 mt-4" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Change picture" aria-label="Change picture">
-                    <i class="bx bx-refresh"></i>
+                    <i class="bx bx-refresh-ccw-alt-dot"></i>
                   </button>
                 </div>
                 <h2 class="h5 mb-1">{{ user.name }}</h2>
@@ -431,7 +365,7 @@
               </div>
               <div class="col-xl-4 col-lg-5 pt-2 pt-lg-0">
                 <h6 class="mb-2">Contact Us</h6>
-                <a href="mailto:support@campusswap.com" class="fw-medium">support@campusswap.com</a>
+                <a href="mailto:support@campusswap.com" class="fw-medium text-decoration-none">support@campusswap.com</a>
               </div>
             </div>
           </div>

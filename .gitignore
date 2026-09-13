@@ -1,2 +1,21 @@
+# Unmerged Dataset
+archives/books
+archives/e-waste
+archives/furniture
+archives/stationery
+
+# Merged Raw Dataset for Model Training
+campus-swap-dataset/
+
+# Logs for Model Training
+runs/
+
+# Files for Model Training
+merge_dataset.py
+
+# Actual Credentials File
+credentials.env
+
+# Repomix Files
 repomix-output.md
 repomix.config.json
