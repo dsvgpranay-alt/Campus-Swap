@@ -1,7 +1,7 @@
 import os
 from functools import wraps
 from urllib.parse import urlparse
-
+from yolo_client.yolo_client import predict
 import mysql.connector
 from google import genai
 from flask import Flask, render_template, request, redirect, url_for, session, flash, abort
@@ -731,6 +731,28 @@ def faqs():
 @app.route("/safety-guidelines")
 def safety_guidelines():
     return render_template("docs/safety_guidelines.html")
+
+@app.route("/detect", methods=["POST"])
+@login_required
+def detect():
+    image = request.files.get("image")
+    if not image:
+        return {"error": "No image provided"}, 400
+
+    image_path = "temp_detection.jpg"
+    image.save(image_path)
+
+    try:
+        result = predict(image_path)
+        print("YOLO RESPONSE:")
+        print(result)
+        return render_template("detection.html",result=result)
+    except Exception as e:
+        print("YOLO ERROR:", e)
+        return {"error": "Unable to get prediction from YOLO."}, 500
+    finally:
+        if os.path.exists(image_path):
+            os.remove(image_path)
 
 if __name__ == "__main__":
     app.run(debug=True)
