@@ -1,31 +1,17 @@
-```html
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
   <head>
     <meta charset="utf-8">
     <title>Campus Swap | List an Item</title>
-
-    <meta name="description" content="Campus Swap - Book, Belongings Exchange Platform">
-    <meta name="keywords" content="bootstrap, students, marketplace, campus, exchange, books, college, university">
-    <meta name="author" content="Campus Swap Team">
-
+    <meta name="description" content="Campus Swap - list an item">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <script src="/static/assets/js/theme-switch.js"></script>
-
     <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
-    <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
-    <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/swiper.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/page-loading.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="/static/assets/css/theme.css">
-
+    <link rel="stylesheet" type="text/css" href="/static/assets/css/theme.css">
     <script src="/static/assets/js/page-loading.js"></script>
   </head>
 
   <body>
-
     <div class="page-loading active">
       <div class="page-loading-inner">
         <div class="page-spinner"></div>
@@ -34,552 +20,177 @@
     </div>
 
     <main class="page-wrapper">
-
       <header class="header navbar navbar-expand-lg bg-light border-bottom border-light shadow-sm fixed-top">
         <div class="container px-3">
           <a href="{{ url_for('index') }}" class="navbar-brand pe-3 text-primary fw-bold text-uppercase">
-            <i class="bx bx-refresh fs-3 me-2"></i>
-            Campus Swap
+            <i class="bx bx-refresh fs-3 me-2"></i>Campus Swap
           </a>
-          <div id="navbarNav" class="offcanvas offcanvas-end">
-            <div class="offcanvas-header border-bottom">
-              <h5 class="offcanvas-title">Menu</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Categories</a>
-                  <div class="dropdown-menu p-0">
-                    <div class="d-lg-flex">
-                      <div class="mega-dropdown-column d-flex justify-content-center align-items-center rounded-3 rounded-end-0 px-0" style="margin: -1px; background-color: #f3f6ff;">
-                      </div>
-                      <div class="mega-dropdown-column pt-lg-3 pb-lg-4" style="--si-mega-dropdown-column-width: 15rem;">
-                        <ul class="list-unstyled mb-0">
-                          <li><a href="{{ url_for('marketplace') }}" class="dropdown-item">All Items</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Books') }}" class="dropdown-item">Books & Study Materials</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Electronics') }}" class="dropdown-item">Electronics & Gadgets</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Stationery') }}" class="dropdown-item">Stationery</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Bicycles') }}" class="dropdown-item">Bicycles & Commute</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Furniture') }}" class="dropdown-item">Furniture</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Dorm-Essentials') }}" class="dropdown-item">Dorm Essentials</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Lab-Equipment') }}" class="dropdown-item">Lab Equipments</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Sports') }}" class="dropdown-item">Sports Gear</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Miscellaneous') }}" class="dropdown-item">Miscellaneous</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Latest-Listings') }}" class="dropdown-item">Latest Listings</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Most-Popular') }}" class="dropdown-item">Most Popular</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Free-Items') }}" class="dropdown-item">Free Items</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Swap-Only') }}" class="dropdown-item">Swap Only</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Freshman-Needs') }}" class="dropdown-item">Freshman Needs</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Senior-Clearouts') }}" class="dropdown-item">Senior Clearouts</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Hostel-Essentials') }}" class="dropdown-item">Hostel Essentials</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Day-Scholar-Needs') }}" class="dropdown-item">Day Scholar Needs</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Textbooks') }}" class="dropdown-item">Textbooks</a></li>
-                          <li><a href="{{ url_for('marketplace', category='Calculators') }}" class="dropdown-item">Calculators</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="nav-item dropdown">
-                  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Community</a>
-                  <div class="dropdown-menu">
-                    <div class="d-lg-flex pt-lg-3">
-                      <div class="mega-dropdown-column">
-                        <ul class="list-unstyled mb-3">
-                          <li><a href="{{ url_for('about') }}" class="dropdown-item py-1">About Us</a></li>
-                          <li><a href="{{ url_for('blogs') }}" class="dropdown-item py-1">Blogs</a></li>
-                          <li><a href="{{ url_for('mission') }}" class="dropdown-item py-1">Our Mission</a></li>
-                          <li><a href="{{ url_for('contact') }}" class="dropdown-item py-1">Contact Support</a></li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                <li class="nav-item dropdown">
-                  <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" aria-current="page">Account</a>
-                  <ul class="dropdown-menu">
-                    {% if session.user_id %}
-                    <li><a href="{{ url_for('profile') }}" class="dropdown-item">My Profile</a></li>
-                    <li><a href="{{ url_for('my_listings') }}" class="dropdown-item">My Listings</a></li>
-                    <li><a href="{{ url_for('logout') }}" class="dropdown-item">Sign Out</a></li>
-                    {% else %}
-                    <li><a href="{{ url_for('login') }}" class="dropdown-item">Sign In</a></li>
-                    <li><a href="{{ url_for('register') }}" class="dropdown-item">Sign Up</a></li>
-                    {% endif %}
-                  </ul>
-                </li>
-              </ul>
-            </div>
-            <div class="offcanvas-header border-top">
-              <a href="{{ url_for('add_item') }}" class="btn btn-primary w-100">
-                <i class="bx bx-plus-circle fs-4 lh-1 me-1"></i>
-                &nbsp;List an Item
-              </a>
-            </div>      
+          <div class="ms-auto d-flex align-items-center gap-2">
+            <a href="{{ url_for('marketplace') }}" class="btn btn-outline-primary btn-sm">Marketplace</a>
+            <a href="{{ url_for('my_listings') }}" class="btn btn-outline-primary btn-sm">My Listings</a>
           </div>
-          <div class="form-check form-switch mode-switch pe-lg-1 ms-auto me-4" data-bs-toggle="mode">
-            <input type="checkbox" class="form-check-input" id="theme-mode">
-            <label class="form-check-label d-none d-sm-block" for="theme-mode">Light</label>
-            <label class="form-check-label d-none d-sm-block" for="theme-mode">Dark</label>
-          </div>
-          <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <a href="{{ url_for('add_item') }}" class="btn btn-primary btn-sm fs-sm rounded d-none d-lg-inline-flex">
-            <i class="bx bx-plus-circle fs-5 lh-1 me-1"></i>
-            &nbsp;List an Item
-          </a>
         </div>
       </header>
 
-      <section class="container pt-5">
-
+      <section class="container pt-5 mt-4">
         <div class="row justify-content-center">
-
           <div class="col-lg-7">
-
-            <h1 class="h2 pb-3">
-              List an Item
-            </h1>
+            <h1 class="h2 pb-3">List an Item</h1>
 
             {% with messages = get_flashed_messages(with_categories=true) %}
-
               {% if messages %}
-
                 {% for category, message in messages %}
-
-                  <div class="alert alert-{{ 'danger' if category == 'error' else category }}">
-                    {{ message }}
-                  </div>
-
+                  <div class="alert alert-{{ 'danger' if category == 'error' else category }}">{{ message }}</div>
                 {% endfor %}
-
               {% endif %}
-
             {% endwith %}
 
-            <form class="needs-validation"
+            <form id="listingForm"
+                  class="needs-validation"
                   method="POST"
                   action="{{ url_for('add_item') }}"
+                  enctype="multipart/form-data"
                   novalidate>
-
               <div class="mb-4">
-
-                <label for="title"
-                       class="form-label fs-base">
-                  Item Title
-                </label>
-
-                <input type="text"
-                       name="title"
-                       id="title"
-                       class="form-control form-control-lg"
-                       placeholder="e.g., Data Structures Textbook (3rd Edition)"
-                       required>
-
+                <label for="title" class="form-label fs-base">Item Title</label>
+                <input type="text" name="title" id="title" class="form-control form-control-lg"
+                       placeholder="e.g., Data Structures Textbook (3rd Edition)" required>
               </div>
 
               <div class="mb-4">
-
-                <div class="d-flex justify-content-between align-items-center mb-2">
-
-                  <label for="description"
-                         class="form-label fs-base mb-0">
-                    Description
-                  </label>
-
-                  <button type="button"
-                          id="generateBtn"
-                          class="btn btn-sm btn-outline-primary"
-                          onclick="generateDescription()">
-                    ✨ Generate with AI
-                  </button>
-
-                </div>
-
-                <textarea name="description"
-                          id="description"
-                          class="form-control form-control-lg"
-                          rows="4"
+                <label for="description" class="form-label fs-base">Description</label>
+                <textarea name="description" id="description" class="form-control form-control-lg" rows="4"
                           placeholder="Condition details, edition, syllabus year, why you're selling, etc."></textarea>
-
-                <small id="aiMessage"
-                       class="text-muted">
-                </small>
-
               </div>
 
               <div class="row">
-
                 <div class="col-sm-6 mb-4">
-
-                  <label for="price"
-                         class="form-label fs-base">
-                    Price (&#8377;)
-                    <small class="text-muted">
-                      (0 for free/swap)
-                    </small>
+                  <label for="price" class="form-label fs-base">
+                    Price (&#8377;) <small class="text-muted">(0 for free/swap)</small>
                   </label>
-
-                  <input type="number"
-                         name="price"
-                         id="price"
-                         min="0"
-                         step="0.01"
-                         class="form-control form-control-lg"
-                         placeholder="0.00">
-
+                  <input type="number" name="price" id="price" min="0" step="0.01"
+                         class="form-control form-control-lg" placeholder="0.00" required>
                 </div>
 
                 <div class="col-sm-6 mb-4">
-
-                  <label for="condition"
-                         class="form-label fs-base">
-                    Condition
-                  </label>
-
-                  <select name="condition"
-                          id="condition"
-                          class="form-select form-select-lg"
-                          required>
-
-                    <option value=""
-                            disabled
-                            selected>
-                      Choose condition
-                    </option>
-
+                  <label for="condition" class="form-label fs-base">Condition</label>
+                  <select name="condition" id="condition" class="form-select form-select-lg" required>
+                    <option value="" disabled selected>Choose condition</option>
                     {% for c in conditions %}
-
-                    <option value="{{ c }}">
-                      {{ c }}
-                    </option>
-
+                      <option value="{{ c }}">{{ c }}</option>
                     {% endfor %}
-
                   </select>
-
                 </div>
-
               </div>
 
               <div class="mb-4">
-
-                <label for="category"
-                       class="form-label fs-base">
-                  Category
-                </label>
-
-                <select name="category"
-                        id="category"
-                        class="form-select form-select-lg"
-                        required>
-
-                  <option value=""
-                          disabled
-                          selected>
-                    Choose category
-                  </option>
-
+                <label for="category" class="form-label fs-base">Category</label>
+                <select name="category" id="category" class="form-select form-select-lg" required>
+                  <option value="" disabled selected>Choose category</option>
                   {% for c in categories %}
-
-                  <option value="{{ c }}">
-                    {{ c }}
-                  </option>
-
+                    <option value="{{ c }}">{{ c }}</option>
                   {% endfor %}
-
                 </select>
-
+                <small class="text-muted d-block mt-2">
+                  This is selected automatically from the uploaded image and verified again when you publish.
+                </small>
               </div>
 
               <div class="mb-4">
+                <label for="itemImage" class="form-label fs-base">Item Image</label>
+                <input type="file" name="image" id="itemImage" class="form-control form-control-lg"
+                       accept="image/*" required>
+                <small class="text-muted d-block mt-2">Upload a clear image for the local classifier.</small>
 
-                <label for="image_url"
-                       class="form-label fs-base">
-                  Image URL
-                  <small class="text-muted">
-                    (optional)
+                <div id="detectionStatus" class="small text-muted mt-2" aria-live="polite"></div>
+                <div id="detectionPreviewWrapper" class="mt-3 d-none">
+                  <canvas id="detectionPreview" class="img-fluid rounded border"
+                          aria-label="Classifier preview"></canvas>
+                  <small class="text-muted d-block mt-2">
+                    The rectangle represents the full image because this is an image classifier, not an object detector.
                   </small>
-                </label>
-
-                <input type="text"
-                       name="image_url"
-                       id="image_url"
-                       class="form-control form-control-lg"
-                       placeholder="https://... (link to a photo of the item)">
-
+                </div>
               </div>
 
               <div class="d-flex mb-3">
-
-                <a href="{{ url_for('marketplace') }}"
-                   class="btn btn-secondary me-3">
-                  Cancel
-                </a>
-
-                <button type="submit"
-                        class="btn btn-primary">
-                  Publish Listing
-                </button>
-
+                <a href="{{ url_for('marketplace') }}" class="btn btn-secondary me-3">Cancel</a>
+                <button type="submit" class="btn btn-primary">Publish Listing</button>
               </div>
-
             </form>
-
           </div>
-
         </div>
-
       </section>
-
     </main>
 
-    <footer class="footer bg-dark border-top border-light pt-5 pb-4 pb-lg-5"
-            data-bs-theme="dark">
-
-      <div class="container pt-lg-4">
-
-        <div class="row pb-5">
-
-          <div class="col-lg-4 col-md-6">
-
-            <div class="navbar-brand text-dark p-0 me-0 mb-3 mb-lg-4 text-uppercase">
-
-              <i class="bx bx-refresh fs-3 text-primary me-2"></i>
-              Campus Swap
-
-            </div>
-
-            <p class="fs-sm text-light opacity-70 pb-lg-3 mb-4">
-              Campus Swap is a student-focused platform that enables students
-              to easily buy, sell, exchange, and donate items within their
-              campus community.
-            </p>
-
-            <form class="needs-validation" novalidate>
-
-              <label for="subscr-email"
-                     class="form-label">
-                Subscribe to campus updates
-              </label>
-
-              <div class="input-group">
-
-                <input type="email"
-                       id="subscr-email"
-                       class="form-control rounded-start ps-5"
-                       placeholder="Your college email"
-                       required>
-
-                <i class="bx bx-envelope fs-lg text-muted position-absolute top-50 start-0 translate-middle-y ms-3 zindex-5"></i>
-
-                <div class="invalid-tooltip position-absolute top-100 start-0">
-                  Please provide a valid email address.
-                </div>
-
-                <button type="submit"
-                        class="btn btn-primary">
-                  Subscribe
-                </button>
-
-              </div>
-
-            </form>
-
-          </div>
-
-          <div class="col-xl-6 col-lg-7 col-md-5 offset-xl-2 offset-md-1 pt-4 pt-md-1 pt-lg-0">
-
-            <div id="footer-links"
-                 class="row">
-
-              <div class="col-lg-4">
-
-                <h6 class="mb-2">
-                  <a href="#useful-links"
-                     class="d-block text-dark dropdown-toggle d-lg-none py-2"
-                     data-bs-toggle="collapse">
-                    Useful Links
-                  </a>
-                </h6>
-
-                <div id="useful-links"
-                     class="collapse d-lg-block"
-                     data-bs-parent="#footer-links">
-
-                  <ul class="nav flex-column pb-lg-1 mb-lg-3">
-
-                    <li class="nav-item">
-                      <a href="{{ url_for('index') }}"
-                         class="nav-link d-inline-block px-0 pt-1 pb-2">
-                        Home
-                      </a>
-                    </li>
-
-                    <li class="nav-item">
-                      <a href="{{ url_for('marketplace') }}"
-                         class="nav-link d-inline-block px-0 pt-1 pb-2">
-                        Marketplace
-                      </a>
-                    </li>
-
-                    <li class="nav-item">
-                      <a href="{{ url_for('profile') }}"
-                         class="nav-link d-inline-block px-0 pt-1 pb-2">
-                        Profile
-                      </a>
-                    </li>
-
-                    <li class="nav-item">
-                      <a href="{{ url_for('my_listings') }}"
-                         class="nav-link d-inline-block px-0 pt-1 pb-2">
-                        My Listings
-                      </a>
-                    </li>
-
-                  </ul>
-
-                </div>
-
-              </div>
-
-              <div class="col-xl-4 col-lg-3">
-
-                <h6 class="mb-2">
-                  Socials
-                </h6>
-
-                <ul class="nav flex-column mb-2 mb-lg-0">
-
-                  <li class="nav-item">
-                    <a href="#"
-                       class="nav-link d-inline-block px-0 pt-1 pb-2">
-                      Instagram
-                    </a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a href="#"
-                       class="nav-link d-inline-block px-0 pt-1 pb-2">
-                      LinkedIn
-                    </a>
-                  </li>
-
-                </ul>
-
-              </div>
-
-              <div class="col-xl-4 col-lg-5 pt-2 pt-lg-0">
-
-                <h6 class="mb-2">
-                  Contact Us
-                </h6>
-
-                <a href="mailto:support@campusswap.com"
-                   class="fw-medium text-decoration-none">
-                  support@campusswap.com
-                </a>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <p class="nav d-block fs-xs text-center text-md-start pb-2 pb-lg-0 mb-0">
-
-          <span class="text-light opacity-50">
-            &copy; 2026 All rights reserved. Made by
-          </span>
-
-          <a class="nav-link d-inline-block p-0"
-             href="#">
-            Campus Swap Team
-          </a>
-
-        </p>
-
-      </div>
-
-    </footer>
-
-    <a href="#top"
-       class="btn-scroll-top"
-       data-scroll>
-
-      <span class="btn-scroll-top-tooltip text-muted fs-sm me-2">
-        Top
-      </span>
-
-      <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
-
-    </a>
-
-    <script src="/static/assets/js/cleave.js"></script>
     <script src="/static/assets/js/theme.js"></script>
-
     <script>
-      async function generateDescription() {
-        const title = document.getElementById("title").value.trim();
-        const category = document.getElementById("category").value;
-        const condition = document.getElementById("condition").value;
+      const imageInput = document.getElementById("itemImage");
+      const categoryInput = document.getElementById("category");
+      const status = document.getElementById("detectionStatus");
+      const previewWrapper = document.getElementById("detectionPreviewWrapper");
+      const canvas = document.getElementById("detectionPreview");
 
-        const button = document.getElementById("generateBtn");
-        const message = document.getElementById("aiMessage");
-        const description = document.getElementById("description");
+      function drawClassifierPreview(file, label, category, confidence) {
+        const image = new Image();
+        image.onload = () => {
+          canvas.width = image.naturalWidth;
+          canvas.height = image.naturalHeight;
+          const context = canvas.getContext("2d");
+          context.drawImage(image, 0, 0);
 
-        if (!title) {
-          message.textContent = "Enter the item title first.";
+          const lineWidth = Math.max(4, Math.round(canvas.width / 160));
+          context.strokeStyle = "#16a34a";
+          context.lineWidth = lineWidth;
+          context.strokeRect(lineWidth, lineWidth,
+            canvas.width - lineWidth * 2, canvas.height - lineWidth * 2);
+
+          const text = `Detected item: ${label} | Category: ${category} | ${(confidence * 100).toFixed(1)}%`;
+          const fontSize = Math.max(18, Math.round(canvas.width / 28));
+          const padding = Math.round(fontSize * 0.55);
+          context.font = `600 ${fontSize}px sans-serif`;
+          const textWidth = context.measureText(text).width;
+          context.fillStyle = "rgba(22, 163, 74, 0.92)";
+          context.fillRect(lineWidth, lineWidth, textWidth + padding * 2, fontSize + padding * 2);
+          context.fillStyle = "#ffffff";
+          context.fillText(text, lineWidth + padding, lineWidth + fontSize + padding);
+
+          URL.revokeObjectURL(image.src);
+          previewWrapper.classList.remove("d-none");
+        };
+        image.src = URL.createObjectURL(file);
+      }
+
+      imageInput.addEventListener("change", async () => {
+        const file = imageInput.files[0];
+        if (!file) {
+          previewWrapper.classList.add("d-none");
+          status.textContent = "";
           return;
         }
 
-        if (!category || !condition) {
-          message.textContent = "Choose a category and condition first.";
-          return;
-        }
-
-        button.disabled = true;
-        button.textContent = "Generating...";
-        message.textContent = "";
+        status.textContent = "Classifying image...";
+        previewWrapper.classList.add("d-none");
+        const formData = new FormData();
+        formData.append("image", file);
 
         try {
-          const response = await fetch(
-            "{{ url_for('generate_description') }}",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json"
-              },
-              body: JSON.stringify({
-                title: title,
-                category: category,
-                condition: condition
-              })
-            }
-          );
-
+          const response = await fetch("{{ url_for('classify_item') }}", {
+            method: "POST",
+            body: formData
+          });
           const data = await response.json();
-
-          if (data.description) {
-            description.value = data.description;
-            message.textContent = "AI description generated. You can edit it.";
-          } else {
-            message.textContent = data.error || "Could not generate description.";
+          if (!response.ok) {
+            throw new Error(data.error || "The image could not be classified.");
           }
 
+          categoryInput.value = data.category;
+          status.textContent = `Detected ${data.label}. Category set to ${data.category}.`;
+          drawClassifierPreview(file, data.label, data.category, data.confidence);
         } catch (error) {
-          message.textContent = "Could not connect to AI.";
+          status.textContent = error.message;
+          categoryInput.value = "";
         }
-
-        button.disabled = false;
-        button.textContent = "Generate with AI";
-      }
+      });
     </script>
-
   </body>
 </html>
-```

@@ -72,3 +72,21 @@ Campus-Swap/
 - 💳 Secure online payment integration
 - 📊 User dashboard with listing statistics
 - 📱 Improved mobile responsiveness
+
+## Local startup
+
+Install dependencies once:
+
+```powershell
+python -m pip install -r requirements.txt
+```
+
+After training finishes, start the application with:
+
+```powershell
+.\start.ps1
+```
+
+The classifier is loaded inside the Flask process, so no separate YOLO server
+is required. Ultralytics selects the available device automatically. The
+default checkpoint is `runs/classify/campus_swap/weights/best.pt`.

@@ -1,11 +1,21 @@
-# Unmerged Dataset
-archives/books
-archives/e-waste
-archives/furniture
-archives/stationery
+# Py Scripts Cache
+__pycache__
 
-# Merged Raw Dataset for Model Training
+# Unmerged Dataset
+archives/e-waste-detection
+archives/furniture-identifier
+archives/stationary-items-detection
+archives/laptop_phone_detect
+archives/living-room-items
+
+# Merged Raw Dataset for Model Training (Object Classification)
+campus-swap-classification/
+
+# Merged Raw Dataset for Model Training (Object Detection)
 campus-swap-dataset/
+
+# User-uploaded listing images
+static/uploads/
 
 # Logs for Model Training
 runs/

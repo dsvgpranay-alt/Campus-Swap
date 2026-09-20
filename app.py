@@ -1,10 +1,14 @@
 import os
 from functools import wraps
+from pathlib import Path
 from urllib.parse import urlparse
+from uuid import uuid4
+
+from PIL import Image, UnidentifiedImageError
+from ultralytics import YOLO
 from yolo_client.yolo_client import predict
 import mysql.connector
-from google import genai
-from flask import Flask, render_template, request, redirect, url_for, session, flash, abort
+from flask import Flask, jsonify, render_template, request, redirect, url_for, session, flash, abort
 from werkzeug.security import generate_password_hash, check_password_hash
 from dotenv import load_dotenv
 
@@ -12,6 +16,18 @@ load_dotenv("credentials.env")
 
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", "campus-swap-dev-secret-key")
+app.config["MAX_CONTENT_LENGTH"] = 10 * 1024 * 1024
+
+PROJECT_ROOT = Path(app.root_path)
+UPLOAD_DIR = PROJECT_ROOT / "static" / "uploads"
+UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+CLASSIFIER_MODEL_PATH = Path(
+    os.getenv(
+        "CLASSIFIER_MODEL_PATH",
+        PROJECT_ROOT / "runs" / "classify" / "campus_swap" / "weights" / "best.pt"
+    )
+)
+classifier_model = None
 
 DB_CONFIG = {
     "host": os.getenv("DB_HOST", "localhost"),
@@ -19,8 +35,6 @@ DB_CONFIG = {
     "password": os.getenv("DB_PASSWORD", ""),
     "database": "campus_swap"
 }
-
-client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 CATEGORIES = [
     "Books",
@@ -40,6 +54,48 @@ CONDITIONS = [
     "Good",
     "Used"
 ]
+
+
+def get_classifier():
+    global classifier_model
+
+    if classifier_model is None:
+        if not CLASSIFIER_MODEL_PATH.exists():
+            raise FileNotFoundError(
+                f"Classifier checkpoint was not found at {CLASSIFIER_MODEL_PATH}. "
+                "Finish train_classifier.py first or set CLASSIFIER_MODEL_PATH."
+            )
+        classifier_model = YOLO(str(CLASSIFIER_MODEL_PATH))
+
+    return classifier_model
+
+
+def classify_image(image_file):
+    """Return the predicted class, marketplace category and confidence."""
+    image_file.stream.seek(0)
+    with Image.open(image_file.stream) as opened_image:
+        opened_image.load()
+        image = opened_image.convert("RGB")
+
+    result = get_classifier().predict(source=image, verbose=False)[0]
+    if result.probs is None:
+        raise ValueError("The loaded checkpoint did not return classification probabilities.")
+
+    class_id = int(result.probs.top1)
+    class_name = str(result.names[class_id])
+    confidence = float(result.probs.top1conf)
+
+    if class_name not in CATEGORIES:
+        raise ValueError(f"The classifier returned unsupported category '{class_name}'.")
+
+    return image, class_name, confidence
+
+
+def save_listing_image(image):
+    filename = f"{uuid4().hex}.jpg"
+    destination = UPLOAD_DIR / filename
+    image.save(destination, format="JPEG", quality=90, optimize=True)
+    return destination, url_for("static", filename=f"uploads/{filename}")
 
 
 def get_db():
@@ -491,14 +547,10 @@ def add_item():
     category = request.form.get("category", "").strip()
     condition = request.form.get("condition", "").strip()
     price = request.form.get("price", "").strip()
-    image_url = request.form.get("image_url", "").strip()
+    image_file = request.files.get("image")
 
-    if not title or not category or not condition or not price:
-        flash("Please fill in all required fields.", "error")
-        return redirect(url_for("add_item"))
-
-    if category not in CATEGORIES:
-        flash("Invalid category.", "error")
+    if not title or not condition or not price or not image_file or not image_file.filename:
+        flash("Title, condition, price and an item image are required.", "error")
         return redirect(url_for("add_item"))
 
     if condition not in CONDITIONS:
@@ -515,10 +567,20 @@ def add_item():
         flash("Please enter a valid non-negative price.", "error")
         return redirect(url_for("add_item"))
 
+    try:
+        image, predicted_category, _confidence = classify_image(image_file)
+    except (FileNotFoundError, UnidentifiedImageError, ValueError, OSError) as error:
+        app.logger.warning("Item classification failed: %s", error)
+        flash("The item image could not be classified. Check the model and upload a clear image.", "error")
+        return redirect(url_for("add_item"))
+
+    category = predicted_category
+    saved_image_path = None
     conn = get_db()
     cur = conn.cursor()
 
     try:
+        saved_image_path, image_url = save_listing_image(image)
         cur.execute("""
             INSERT INTO items
             (seller_id, title, description, price, category, item_condition, image_url)
@@ -538,6 +600,8 @@ def add_item():
 
     except Exception:
         conn.rollback()
+        if saved_image_path and saved_image_path.exists():
+            saved_image_path.unlink()
         flash("Unable to list the item.", "error")
 
     finally:
@@ -547,39 +611,27 @@ def add_item():
     return redirect(url_for("my_listings"))
 
 
-@app.route("/generate-description", methods=["POST"])
+@app.route("/classify-item", methods=["POST"])
 @login_required
-def generate_description():
-    data = request.get_json(silent=True) or {}
-
-    title = data.get("title", "").strip()
-    category = data.get("category", "").strip()
-    condition = data.get("condition", "").strip()
-
-    if not title or not category or not condition:
-        return {"error": "Title, category and condition are required."}, 400
-
-    prompt = f"""
-Write a short marketplace description for a college student selling an item.
-
-Item: {title}
-Category: {category}
-Condition: {condition}
-
-Keep it natural and between 40 and 70 words.
-Do not invent specifications or features.
-"""
+def classify_item():
+    image_file = request.files.get("image")
+    if not image_file or not image_file.filename:
+        return jsonify(error="No image was provided."), 400
 
     try:
-        response = client.models.generate_content(
-            model="gemini-3-flash-preview",
-            contents=prompt
+        _, predicted_category, confidence = classify_image(image_file)
+        return jsonify(
+            label=predicted_category,
+            detected_item=predicted_category,
+            category=predicted_category,
+            confidence=round(confidence, 4),
+            note="Classification result shown over the full image; this model does not return object coordinates."
         )
-
-        return {"description": response.text.strip()}
-
-    except Exception:
-        return {"error": "Unable to generate a description right now."}, 500
+    except FileNotFoundError as error:
+        return jsonify(error=str(error)), 503
+    except (UnidentifiedImageError, ValueError, OSError) as error:
+        app.logger.warning("Item classification failed: %s", error)
+        return jsonify(error="The image could not be classified."), 422
 
 
 @app.route("/edit-item/<int:item_id>", methods=["GET", "POST"])
@@ -755,4 +807,11 @@ def detect():
             os.remove(image_path)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # Load the classifier before Flask starts so startup reports checkpoint
+    # problems immediately during local development.
+    get_classifier()
+    print(f"Loaded classifier from {CLASSIFIER_MODEL_PATH}")
+    app.run(
+        debug=os.getenv("FLASK_DEBUG", "0") == "1",
+        use_reloader=False
+    )

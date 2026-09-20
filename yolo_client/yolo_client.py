@@ -1,6 +1,8 @@
 import requests
 
+
 YOLO_SERVER = ""
+
 
 def predict(image_path):
     with open(image_path, "rb") as image:

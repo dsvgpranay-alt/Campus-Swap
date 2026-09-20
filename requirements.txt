@@ -1,5 +1,6 @@
 Flask
 mysql-connector-python
-google-genai
 Werkzeug
 python-dotenv
+ultralytics
+Pillow
