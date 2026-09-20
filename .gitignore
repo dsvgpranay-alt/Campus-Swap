@@ -17,9 +17,6 @@ campus-swap-dataset/
 # User-uploaded listing images
 static/uploads/
 
-# Logs for Model Training
-runs/
-
 # Files for Model Training
 merge_dataset.py
 
