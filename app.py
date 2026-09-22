@@ -3,6 +3,7 @@ from functools import wraps
 from pathlib import Path
 from urllib.parse import urlparse
 from uuid import uuid4
+from chatbot.chatbot import get_response
 
 from PIL import Image, UnidentifiedImageError
 from ultralytics import YOLO
@@ -754,7 +755,138 @@ def delete_item(item_id):
         conn.close()
 
     return redirect(url_for("my_listings"))
+def search_items(message):
 
+    conn = get_db()
+    cur = conn.cursor(dictionary=True)
+
+    try:
+        message = message.lower()
+
+        import re
+
+        price_match = re.search(r'\b(\d+(?:\.\d+)?)\b', message)
+
+        conditions = []
+        params = []
+
+        # Price search
+        if price_match:
+
+            price = float(price_match.group(1))
+
+            if "below" in message or "under" in message or "less than" in message:
+                conditions.append("items.price < %s")
+                params.append(price)
+
+            elif "above" in message or "over" in message or "more than" in message:
+                conditions.append("items.price > %s")
+                params.append(price)
+
+            else:
+                conditions.append("items.price = %s")
+                params.append(price)
+
+        # Remove price-related words
+        stop_words = {
+            "i", "me", "my", "want", "wanna", "need",
+            "looking", "look", "for", "a", "an", "the",
+            "show", "find", "some", "please", "can", "you",
+            "do", "have", "is", "there", "any",
+            "give", "u", "list", "of", "items", "item",
+            "available", "swap", "buy", "purchase",
+            "below", "under", "less", "than",
+            "above", "over", "more"
+        }
+
+        words = message.split()
+
+        keywords = [
+            word for word in words
+            if word not in stop_words
+            and not re.fullmatch(r'\d+(?:\.\d+)?', word)
+        ]
+
+        # Item name search
+        for word in keywords:
+            conditions.append(
+                "(items.title LIKE %s OR items.description LIKE %s)"
+            )
+
+            search_value = f"%{word}%"
+            params.extend([search_value, search_value])
+
+        # Generic request → show latest items
+        if not conditions:
+            cur.execute("""
+                SELECT
+                    items.id,
+                    items.title,
+                    items.description,
+                    items.price,
+                    items.category,
+                    items.item_condition,
+                    items.image_url
+                FROM items
+                ORDER BY items.created_at DESC
+                LIMIT 5
+            """)
+
+            return cur.fetchall()
+
+        query = f"""
+            SELECT
+                items.id,
+                items.title,
+                items.description,
+                items.price,
+                items.category,
+                items.item_condition,
+                items.image_url
+            FROM items
+            WHERE {" AND ".join(conditions)}
+            ORDER BY items.created_at DESC
+            LIMIT 5
+        """
+
+        cur.execute(query, tuple(params))
+
+        return cur.fetchall()
+
+    finally:
+        cur.close()
+        conn.close()
+@app.route("/chatbot", methods=["POST"])
+def chatbot():
+
+    data = request.get_json() or {}
+    message = data.get("message", "").strip()
+
+    if not message:
+        return jsonify({
+            "response": "Please enter a message."
+        }), 400
+
+    result = get_response(message)
+
+    if result["intent"] == "search_item":
+
+        items = search_items(message)
+
+        if not items:
+            return jsonify({
+                "intent": "search_item",
+                "response": "I couldn't find any matching items.",
+                "items": []
+            })
+
+        return jsonify({
+            "intent": "search_item",
+            "response": f"I found {len(items)} matching item(s).",
+            "items": items
+        })
+
+    return jsonify(result)
 
 @app.route("/about")
 def about():
@@ -807,8 +939,7 @@ def detect():
             os.remove(image_path)
 
 if __name__ == "__main__":
-    # Load the classifier before Flask starts so startup reports checkpoint
-    # problems immediately during local development.
+    
     get_classifier()
     print(f"Loaded classifier from {CLASSIFIER_MODEL_PATH}")
     app.run(

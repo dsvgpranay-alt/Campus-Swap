@@ -16,7 +16,7 @@
     <link href="https://cdn.boxicons.com/3.0.8/fonts/basic/boxicons.min.css" rel="stylesheet">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/filled/boxicons-filled.min.css" rel="stylesheet">
     <link href="https://cdn.boxicons.com/3.0.8/fonts/brands/boxicons-brands.min.css" rel="stylesheet">
-
+   <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/chatbot.css') }}">
     <script src="/static/assets/js/page-loading.js"></script>
 </head>
 
@@ -358,6 +358,57 @@
     </section>
 
 </main>
+<button
+    class="chatbot-button"
+    onclick="toggleChatbot()"
+    aria-label="Open chatbot">
+    🤖
+</button>
+
+
+<div class="chatbot-window" id="chatbotWindow">
+
+    <div class="chatbot-header">
+
+        <div>
+            <h3>Campus Swap Assistant</h3>
+            <span>Online</span>
+        </div>
+
+        <button
+            class="chatbot-close"
+            onclick="closeChatbot()">
+            ×
+        </button>
+
+    </div>
+
+
+    <div
+        class="chatbot-messages"
+        id="chatMessages">
+
+        <div class="bot-message">
+            Hey! How can I help you with Campus Swap?
+        </div>
+
+    </div>
+
+
+    <div class="chatbot-input">
+
+        <input
+            type="text"
+            id="chatInput"
+            placeholder="Ask something...">
+
+        <button onclick="sendMessage()">
+            ➤
+        </button>
+
+    </div>
+
+</div>
 
 <footer class="footer bg-dark border-top border-light pt-5 pb-4"
         data-bs-theme="dark">
@@ -449,9 +500,9 @@
     <i class="btn-scroll-top-icon bx bx-chevron-up"></i>
 
 </a>
-
 <script src="/static/assets/js/cleave.js"></script>
 <script src="/static/assets/js/theme.js"></script>
+<script src="{{ url_for('static', filename='assets/js/chatbot.js') }}"></script>
 
 </body>
 </html>

@@ -23,8 +23,6 @@ ROOT = Path(__file__).resolve().parent
 SOURCE_DATASET = ROOT / "campus-swap-dataset"
 CLASSIFICATION_DATASET = ROOT / "campus-swap-classification"
 
-# Detection labels are converted to the marketplace categories used by app.py.
-# Change these groups if the categories presented by the UI change.
 CLASS_GROUPS = {
     "Books": {"Book"},
     "Electronics": {"E-waste_Misc", "Laptop", "Phone"},

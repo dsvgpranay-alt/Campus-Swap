@@ -1,6 +1,5 @@
 CREATE DATABASE IF NOT EXISTS campus_swap;
 USE campus_swap;
-
 CREATE TABLE IF NOT EXISTS users (
     id              INT AUTO_INCREMENT PRIMARY KEY,
     first_name      VARCHAR(60)  NOT NULL,
